@@ -175,12 +175,12 @@ export default function Home() {
               { name: 'Matt Caldwell', title: 'Founder', image: 'https://arcofitgym.com/wp-content/uploads/2025/02/Matt-Caldwell.jpg' },
               { name: 'Jason McCourt', title: 'Founder', image: 'https://arcofitgym.com/wp-content/uploads/2025/02/Jason-McCourt.jpg' },
             ].map((person, i) => (
-              <div key={i} className="reveal opacity-0 translate-y-8 transition-all duration-700 text-center group" style={{ transitionDelay: `${i * 100}ms` }}>
-                <div className="w-full aspect-square bg-white/5 rounded-xl border border-white/10 mb-4 group-hover:border-[#0096C7]/50 transition-colors overflow-hidden">
-                  <img src={person.image} alt={person.name} className="w-full h-full object-cover" />
+              <div key={i} className="reveal opacity-0 translate-y-8 transition-all duration-500 text-center group cursor-pointer" style={{ transitionDelay: `${i * 100}ms` }}>
+                <div className="w-full aspect-square bg-white/5 rounded-xl border border-white/10 mb-4 overflow-hidden transition-all duration-500 group-hover:border-[#0096C7]/60 group-hover:shadow-[0_0_25px_rgba(0,150,199,0.3)] group-hover:-translate-y-2 group-hover:scale-[1.03]">
+                  <img src={person.image} alt={person.name} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
                 </div>
-                <h3 className="font-bold text-xs sm:text-sm uppercase tracking-wider">{person.name}</h3>
-                <p className="text-white/40 text-xs mt-1">{person.title}</p>
+                <h3 className="font-bold text-xs sm:text-sm uppercase tracking-wider transition-colors duration-300 group-hover:text-[#0096C7]">{person.name}</h3>
+                <p className="text-white/40 text-xs mt-1 transition-colors duration-300 group-hover:text-white/60">{person.title}</p>
               </div>
             ))}
           </div>
