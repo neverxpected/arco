@@ -88,8 +88,19 @@ export default function AboutPage() {
           </a>
           <div className="hidden md:flex items-center gap-6 text-xs font-medium tracking-widest uppercase text-white/70">
             <a href="/" className="hover:text-[#0096C7] transition-colors">Home</a>
-            <a href="#" className="hover:text-[#0096C7] transition-colors">Group Fitness</a>
-            <a href="#" className="hover:text-[#0096C7] transition-colors">Amenities</a>
+            <div className="relative group">
+              <a href="/group-fitness" className="hover:text-[#0096C7] transition-colors flex items-center gap-1">
+                Group Fitness
+                <svg xmlns="http://www.w3.org/2000/svg" className="w-3 h-3 transition-transform group-hover:rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" /></svg>
+              </a>
+              <div className="absolute top-full left-0 mt-2 w-48 bg-black/95 backdrop-blur-md border border-white/10 rounded-lg py-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 translate-y-1 group-hover:translate-y-0">
+                <a href="/group-fitness" className="block px-4 py-2 text-white/60 hover:text-[#0096C7] hover:bg-white/5 transition-colors normal-case tracking-normal text-xs">Group Fitness</a>
+                <a href="/reformer-pilates" className="block px-4 py-2 text-white/60 hover:text-[#0096C7] hover:bg-white/5 transition-colors normal-case tracking-normal text-xs">Reformer Pilates</a>
+                <a href="/yoga-teacher-training" className="block px-4 py-2 text-white/60 hover:text-[#0096C7] hover:bg-white/5 transition-colors normal-case tracking-normal text-xs">Yoga Teacher Training</a>
+                <a href="/schedule" className="block px-4 py-2 text-white/60 hover:text-[#0096C7] hover:bg-white/5 transition-colors normal-case tracking-normal text-xs">Schedule</a>
+              </div>
+            </div>
+            <a href="/amenities" className="hover:text-[#0096C7] transition-colors">Amenities</a>
             <a href="#" className="hover:text-[#0096C7] transition-colors">Membership</a>
             <a href="/about-us" className="text-[#0096C7]">About</a>
             <a href="/events" className="hover:text-[#0096C7] transition-colors">Events</a>
@@ -108,8 +119,7 @@ export default function AboutPage() {
             Founded on Experience
           </p>
           <h1 className="text-4xl sm:text-6xl md:text-7xl font-black uppercase leading-none mb-6 opacity-0 animate-[fadeUp_0.8s_ease_0.4s_forwards]">
-            Our<br />
-            <span className="text-[#0096C7]">Story</span>
+            Our <span className="text-[#0096C7]">Story</span>
           </h1>
           <p className="text-white/50 text-sm sm:text-base max-w-2xl mx-auto opacity-0 animate-[fadeUp_0.8s_ease_0.6s_forwards]">
             Born from a shared passion for training and a dream to create the perfect gym.

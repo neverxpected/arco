@@ -28,14 +28,25 @@ export default function Home() {
       {/* NAV */}
       <nav className="fixed top-0 w-full z-50 bg-black/80 backdrop-blur-md border-b border-white/10">
         <div className="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
-          <div className="text-xl font-black tracking-tight">
+          <a href="/" className="text-xl font-black tracking-tight">
             <span className="text-white">ARCO</span>
             <span className="text-[#0096C7]">FIT</span>
-          </div>
+          </a>
           <div className="hidden md:flex items-center gap-6 text-xs font-medium tracking-widest uppercase text-white/70">
-            <a href="#" className="hover:text-[#0096C7] transition-colors">Home</a>
-            <a href="#" className="hover:text-[#0096C7] transition-colors">Group Fitness</a>
-            <a href="#" className="hover:text-[#0096C7] transition-colors">Amenities</a>
+            <a href="/" className="hover:text-[#0096C7] transition-colors">Home</a>
+            <div className="relative group">
+              <a href="/group-fitness" className="hover:text-[#0096C7] transition-colors flex items-center gap-1">
+                Group Fitness
+                <svg xmlns="http://www.w3.org/2000/svg" className="w-3 h-3 transition-transform group-hover:rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" /></svg>
+              </a>
+              <div className="absolute top-full left-0 mt-2 w-48 bg-black/95 backdrop-blur-md border border-white/10 rounded-lg py-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 translate-y-1 group-hover:translate-y-0">
+                <a href="/group-fitness" className="block px-4 py-2 text-white/60 hover:text-[#0096C7] hover:bg-white/5 transition-colors normal-case tracking-normal text-xs">Group Fitness</a>
+                <a href="/reformer-pilates" className="block px-4 py-2 text-white/60 hover:text-[#0096C7] hover:bg-white/5 transition-colors normal-case tracking-normal text-xs">Reformer Pilates</a>
+                <a href="/yoga-teacher-training" className="block px-4 py-2 text-white/60 hover:text-[#0096C7] hover:bg-white/5 transition-colors normal-case tracking-normal text-xs">Yoga Teacher Training</a>
+                <a href="/schedule" className="block px-4 py-2 text-white/60 hover:text-[#0096C7] hover:bg-white/5 transition-colors normal-case tracking-normal text-xs">Schedule</a>
+              </div>
+            </div>
+            <a href="/amenities" className="hover:text-[#0096C7] transition-colors">Amenities</a>
             <a href="#" className="hover:text-[#0096C7] transition-colors">Membership</a>
             <a href="/about-us" className="hover:text-[#0096C7] transition-colors">About</a>
             <a href="/events" className="hover:text-[#0096C7] transition-colors">Events</a>
@@ -65,16 +76,16 @@ export default function Home() {
             Science-based wellness, an inspiring community, and the highest-quality equipment at our 27,000 square-foot facility.
           </p>
           <div className="flex flex-col sm:flex-row flex-wrap justify-center gap-3 opacity-0 animate-[fadeUp_0.8s_ease_0.8s_forwards]">
-            <a href="#" className="bg-[#0096C7] hover:bg-[#0077A8] text-white font-bold px-6 py-3 rounded transition-all hover:scale-105 tracking-wider uppercase text-xs">
+            <a href="https://arcofitgym.clubautomation.com/member-portal/locations/1/memberships" target="_blank" rel="noopener noreferrer" className="bg-[#0096C7] hover:bg-[#0077A8] text-white font-bold px-6 py-3 rounded transition-all hover:scale-105 tracking-wider uppercase text-xs">
               Membership Options
             </a>
-            <a href="#" className="bg-white/10 hover:bg-white/20 border border-white/20 text-white font-bold px-6 py-3 rounded transition-all hover:scale-105 tracking-wider uppercase text-xs">
+            <a href="https://arcofitgym.com/more-information/" target="_blank" rel="noopener noreferrer" className="bg-white/10 hover:bg-white/20 border border-white/20 text-white font-bold px-6 py-3 rounded transition-all hover:scale-105 tracking-wider uppercase text-xs">
               Schedule a Tour
             </a>
-            <a href="#" className="border border-[#0096C7] text-[#0096C7] hover:bg-[#0096C7] hover:text-white font-bold px-6 py-3 rounded transition-all hover:scale-105 tracking-wider uppercase text-xs">
+            <a href="/amenities" className="border border-[#0096C7] text-[#0096C7] hover:bg-[#0096C7] hover:text-white font-bold px-6 py-3 rounded transition-all hover:scale-105 tracking-wider uppercase text-xs">
               Floor Plan
             </a>
-            <a href="#" className="border border-white/30 text-white/70 hover:border-white hover:text-white font-bold px-6 py-3 rounded transition-all hover:scale-105 tracking-wider uppercase text-xs">
+            <a href="https://arcofitgym.vfpnext.com/embed/engage/form/11?Account=21585041&ClubID=1" target="_blank" rel="noopener noreferrer" className="border border-white/30 text-white/70 hover:border-white hover:text-white font-bold px-6 py-3 rounded transition-all hover:scale-105 tracking-wider uppercase text-xs">
               1-Day Pass
             </a>
           </div>
@@ -170,10 +181,10 @@ export default function Home() {
           </div>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
             {[
-              { name: 'Alli Vasquez', title: 'General Manager', image: 'https://arcofitgym.com/wp-content/uploads/2025/02/Alli-Vasquez.jpg' },
               { name: 'Jeremy Koger', title: 'Founder', image: 'https://arcofitgym.com/wp-content/uploads/2025/02/Jeremy-Koger.jpg' },
               { name: 'Matt Caldwell', title: 'Founder', image: 'https://arcofitgym.com/wp-content/uploads/2025/02/Matt-Caldwell.jpg' },
               { name: 'Jason McCourt', title: 'Founder', image: 'https://arcofitgym.com/wp-content/uploads/2025/02/Jason-McCourt.jpg' },
+              { name: 'Alli Vasquez', title: 'General Manager', image: 'https://arcofitgym.com/wp-content/uploads/2025/02/Alli-Vasquez.jpg' },
             ].map((person, i) => (
               <div key={i} className="reveal opacity-0 translate-y-8 transition-all duration-500 text-center group cursor-pointer" style={{ transitionDelay: `${i * 100}ms` }}>
                 <div className="w-full aspect-square bg-white/5 rounded-xl border border-white/10 mb-4 overflow-hidden transition-all duration-500 group-hover:border-[#0096C7]/60 group-hover:shadow-[0_0_25px_rgba(0,150,199,0.3)] group-hover:-translate-y-2 group-hover:scale-[1.03]">
@@ -230,8 +241,9 @@ export default function Home() {
             </div>
           </div>
         </div>
-        <div className="max-w-7xl mx-auto mt-10 pt-8 border-t border-white/10 text-center text-white/20 text-xs">
-          Copyright 2026 Arco Fit Gym & Wellness
+        <div className="max-w-7xl mx-auto mt-10 pt-8 border-t border-white/10 flex flex-col items-center gap-4">
+          <img src="https://arcofitgym.com/wp-content/uploads/2026/01/RYS200-300x300.png" alt="Registered Yoga School RYS 200" className="w-20 h-20 invert brightness-200 opacity-60" />
+          <p className="text-white/20 text-xs">Copyright 2026 Arco Fit Gym &amp; Wellness</p>
         </div>
       </footer>
 

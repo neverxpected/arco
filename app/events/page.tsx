@@ -140,10 +140,21 @@ export default function EventsPage() {
           </a>
           <div className="hidden md:flex items-center gap-6 text-xs font-medium tracking-widest uppercase text-white/70">
             <a href="/" className="hover:text-[#0096C7] transition-colors">Home</a>
-            <a href="#" className="hover:text-[#0096C7] transition-colors">Group Fitness</a>
-            <a href="#" className="hover:text-[#0096C7] transition-colors">Amenities</a>
+            <div className="relative group">
+              <a href="/group-fitness" className="hover:text-[#0096C7] transition-colors flex items-center gap-1">
+                Group Fitness
+                <svg xmlns="http://www.w3.org/2000/svg" className="w-3 h-3 transition-transform group-hover:rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" /></svg>
+              </a>
+              <div className="absolute top-full left-0 mt-2 w-48 bg-black/95 backdrop-blur-md border border-white/10 rounded-lg py-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 translate-y-1 group-hover:translate-y-0">
+                <a href="/group-fitness" className="block px-4 py-2 text-white/60 hover:text-[#0096C7] hover:bg-white/5 transition-colors normal-case tracking-normal text-xs">Group Fitness</a>
+                <a href="/reformer-pilates" className="block px-4 py-2 text-white/60 hover:text-[#0096C7] hover:bg-white/5 transition-colors normal-case tracking-normal text-xs">Reformer Pilates</a>
+                <a href="/yoga-teacher-training" className="block px-4 py-2 text-white/60 hover:text-[#0096C7] hover:bg-white/5 transition-colors normal-case tracking-normal text-xs">Yoga Teacher Training</a>
+                <a href="/schedule" className="block px-4 py-2 text-white/60 hover:text-[#0096C7] hover:bg-white/5 transition-colors normal-case tracking-normal text-xs">Schedule</a>
+              </div>
+            </div>
+            <a href="/amenities" className="hover:text-[#0096C7] transition-colors">Amenities</a>
             <a href="#" className="hover:text-[#0096C7] transition-colors">Membership</a>
-            <a href="#" className="hover:text-[#0096C7] transition-colors">About</a>
+            <a href="/about-us" className="hover:text-[#0096C7] transition-colors">About</a>
             <a href="/events" className="text-[#0096C7]">Events</a>
           </div>
           <a href="tel:3465532726" className="bg-[#0096C7] hover:bg-[#0077A8] text-white text-xs font-bold px-4 py-2 rounded transition-colors tracking-wider">
@@ -178,39 +189,44 @@ export default function EventsPage() {
               className="reveal opacity-0 translate-y-8 transition-all duration-700 group"
               style={{ transitionDelay: `${(i % 6) * 80}ms` }}
             >
-              <div className="h-full bg-white/[0.03] border border-white/10 rounded-xl p-6 flex flex-col transition-all duration-500 hover:border-[#0096C7]/40 hover:bg-white/[0.06] hover:shadow-[0_0_30px_rgba(0,150,199,0.1)] hover:-translate-y-1">
-                {/* Category & Price */}
-                <div className="flex items-center justify-between mb-4">
-                  <span className={`text-[10px] font-bold uppercase tracking-widest px-3 py-1 rounded-full border ${categoryColors[event.category] || 'bg-white/10 text-white/60 border-white/20'}`}>
-                    {event.category}
-                  </span>
-                  {event.price && (
-                    <span className="text-white/40 text-xs font-medium">{event.price}</span>
-                  )}
+              <div className="h-full border border-gray-200 rounded-xl overflow-hidden flex flex-col transition-all duration-500 hover:border-[#0096C7]/60 hover:shadow-[0_0_30px_rgba(0,150,199,0.15)] hover:-translate-y-1">
+                {/* Dark Top */}
+                <div className="bg-[#111111] p-6 pb-5">
+                  {/* Category & Price */}
+                  <div className="flex items-center justify-between mb-4">
+                    <span className={`text-[10px] font-bold uppercase tracking-widest px-3 py-1 rounded-full border ${categoryColors[event.category] || 'bg-white/10 text-white/60 border-white/20'}`}>
+                      {event.category}
+                    </span>
+                    {event.price && (
+                      <span className="text-white/40 text-xs font-medium">{event.price}</span>
+                    )}
+                  </div>
+
+                  {/* Title */}
+                  <h3 className="text-white text-base sm:text-lg font-bold mb-3 group-hover:text-[#0096C7] transition-colors duration-300 leading-tight">
+                    {event.title}
+                  </h3>
+
+                  {/* Date & Time */}
+                  <div className="flex items-center gap-2 text-white/50 text-xs">
+                    <svg xmlns="http://www.w3.org/2000/svg" className="w-4 h-4 text-[#0096C7] flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 0 1 2.25-2.25h13.5A2.25 2.25 0 0 1 21 7.5v11.25m-18 0A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75m-18 0v-7.5A2.25 2.25 0 0 1 5.25 9h13.5A2.25 2.25 0 0 1 21 11.25v7.5" />
+                    </svg>
+                    <span>{event.date}</span>
+                    <span className="text-white/20">|</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" className="w-4 h-4 text-[#0096C7] flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+                    </svg>
+                    <span>{event.time}</span>
+                  </div>
                 </div>
 
-                {/* Title */}
-                <h3 className="text-base sm:text-lg font-bold mb-3 group-hover:text-[#0096C7] transition-colors duration-300 leading-tight">
-                  {event.title}
-                </h3>
-
-                {/* Date & Time */}
-                <div className="flex items-center gap-2 mb-4 text-white/50 text-xs">
-                  <svg xmlns="http://www.w3.org/2000/svg" className="w-4 h-4 text-[#0096C7] flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 0 1 2.25-2.25h13.5A2.25 2.25 0 0 1 21 7.5v11.25m-18 0A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75m-18 0v-7.5A2.25 2.25 0 0 1 5.25 9h13.5A2.25 2.25 0 0 1 21 11.25v7.5" />
-                  </svg>
-                  <span>{event.date}</span>
-                  <span className="text-white/20">|</span>
-                  <svg xmlns="http://www.w3.org/2000/svg" className="w-4 h-4 text-[#0096C7] flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
-                  </svg>
-                  <span>{event.time}</span>
+                {/* Light Bottom */}
+                <div className="bg-white p-6 pt-5 flex-grow">
+                  <p className="text-gray-500 text-sm leading-relaxed">
+                    {event.description}
+                  </p>
                 </div>
-
-                {/* Description */}
-                <p className="text-white/40 text-sm leading-relaxed flex-grow">
-                  {event.description}
-                </p>
               </div>
             </div>
           ))}
