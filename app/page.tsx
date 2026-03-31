@@ -135,7 +135,7 @@ export default function Home() {
       {/* SCIENCE SECTION */}
       <section className="bg-[#0A0A0A] py-20 px-4">
         <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-          <div className="reveal opacity-0 translate-y-8 transition-all duration-700">
+          <div className="reveal opacity-0 translate-y-8 transition-all duration-700 text-center md:text-left">
             <p className="text-[#0096C7] text-xs font-bold tracking-[0.3em] uppercase mb-4">The Arco Fit Way</p>
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-black uppercase leading-tight mb-6">
               A Science-Based<br />Approach to<br />
