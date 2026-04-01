@@ -171,6 +171,31 @@ export default function Home() {
         </div>
       </section>
 
+      {/* LOCATION */}
+      <section className="bg-[#0A0A0A] border-t border-white/10 py-20 px-4">
+        <div className="max-w-7xl mx-auto flex flex-col items-center">
+          <div className="reveal opacity-0 translate-y-8 transition-all duration-700 text-center mb-10">
+            <p className="text-[#0096C7] text-xs font-bold tracking-[0.3em] uppercase mb-3">Visit Us</p>
+            <h2 className="text-3xl sm:text-4xl font-black uppercase mb-4">Our Location</h2>
+            <p className="text-white/60 text-sm">
+              6527 Skyline Dr. Building C<br />
+              Fulshear, TX 77441
+            </p>
+          </div>
+          <div className="reveal opacity-0 translate-y-8 transition-all duration-700 w-full max-w-5xl h-[400px] sm:h-[500px] rounded-2xl overflow-hidden border border-white/10 bg-white/5 p-2 shadow-[0_0_30px_rgba(0,0,0,0.5)]">
+            <iframe
+              src="https://maps.google.com/maps?q=6527%20Skyline%20Dr.%20Building%20C%20Fulshear,%20TX%2077441&t=&z=14&ie=UTF8&iwloc=&output=embed"
+              width="100%"
+              height="100%"
+              className="rounded-xl grayscale contrast-[110%] brightness-90"
+              allowFullScreen={false}
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+            ></iframe>
+          </div>
+        </div>
+      </section>
+
       <Footer />
 
     </main>
