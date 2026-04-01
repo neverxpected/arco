@@ -21,6 +21,7 @@ export default function Footer() {
             <li><a href="/events" className="hover:text-[#0096C7] transition-colors">Events</a></li>
             <li><a href="/schedule" className="hover:text-[#0096C7] transition-colors">Schedule</a></li>
             <li><a href="/yoga-teacher-training" className="hover:text-[#0096C7] transition-colors">Yoga Teacher Training</a></li>
+            <li><a href="/privacy-policy" className="hover:text-[#0096C7] transition-colors">Privacy Policy</a></li>
           </ul>
         </div>
         <div>
@@ -35,7 +36,7 @@ export default function Footer() {
         <div>
           <h4 className="text-xs font-bold tracking-widest uppercase text-white/60 mb-4">Connect</h4>
           <div className="flex gap-3">
-            <a href="https://www.facebook.com/share/mxxSnexwQjHehWGr/?mibextid=WC7FNe" target="_blank" rel="noopener noreferrer" className="w-9 h-9 border border-white/20 rounded-lg flex items-center justify-center hover:border-[#0096C7] hover:text-[#0096C7] transition-colors text-white/70">
+            <a href="https://www.facebook.com/profile.php?id=100093109776783" target="_blank" rel="noopener noreferrer" className="w-9 h-9 border border-white/20 rounded-lg flex items-center justify-center hover:border-[#0096C7] hover:text-[#0096C7] transition-colors text-white/70">
               <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
             </a>
             <a href="https://www.instagram.com/arcofitgym" target="_blank" rel="noopener noreferrer" className="w-9 h-9 border border-white/20 rounded-lg flex items-center justify-center hover:border-[#0096C7] hover:text-[#0096C7] transition-colors text-white/70">
