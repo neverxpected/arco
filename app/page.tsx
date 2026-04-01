@@ -39,7 +39,7 @@ export default function Home() {
           playsInline
           className="absolute inset-0 w-full h-full object-cover"
         />
-        <div className="absolute inset-0 bg-black/65" />
+        <div className="absolute inset-0 bg-black/35" />
         <div className="relative z-10 text-center px-2 sm:px-4 w-full max-w-4xl mx-auto pt-20">
           <p className="text-[#0096C7] text-xs font-bold tracking-[0.3em] uppercase mb-4 opacity-0 animate-[fadeUp_0.8s_ease_0.2s_forwards]">
             Fulshear, Texas
@@ -118,11 +118,11 @@ export default function Home() {
         </div>
 
         {/* INFINITE PHOTO SCROLLER */}
-        <div className="relative w-full mt-2 -px-4 mx-auto max-w-[100vw] overflow-hidden">
-          {/* Black fade gradients for edge blending */}
-          <div className="absolute inset-y-0 left-0 w-16 sm:w-32 bg-gradient-to-r from-black via-black/80 to-transparent z-10 pointer-events-none"></div>
-          <div className="absolute inset-y-0 right-0 w-16 sm:w-32 bg-gradient-to-l from-black via-black/80 to-transparent z-10 pointer-events-none"></div>
-          
+        <div className="relative w-full mt-2 mx-auto max-w-7xl overflow-hidden">
+          {/* Fade out on the left, fade in on the right */}
+          <div className="absolute inset-y-0 left-0 w-20 sm:w-40 bg-gradient-to-r from-black to-transparent z-10 pointer-events-none"></div>
+          <div className="absolute inset-y-0 right-0 w-20 sm:w-40 bg-gradient-to-l from-black to-transparent z-10 pointer-events-none"></div>
+
           <div className="flex w-[max-content] animate-marquee gap-6 px-2 py-8 hover:[animation-play-state:paused] items-center">
             {/* Render two identical groups side by side for a seamless infinite loop */}
             {[...Array(2)].map((_, i) => (
@@ -130,14 +130,13 @@ export default function Home() {
                 {[
                   'acrofit sign.jpg', 'cardio section.jpg', 'custom saunas.jpg', 'group fitness.jpeg', 'gym 1.jpg', 'gym 2.jpg', 'gym 3.jpg', 'gym 4.jpg', 'gym floor.jpg', 'locker rom.jpeg', 'revitalize.jpg', 'world class equipment.jpg', 'yoga and pilates.jpeg'
                 ].map((img, j) => (
-                  <div key={j} className="relative w-64 sm:w-80 h-40 sm:h-56 rounded-xl overflow-hidden shrink-0 group border border-white/10 transition-all duration-500 hover:border-[#0096C7]/60 hover:shadow-[0_0_25px_rgba(0,150,199,0.3)] hover:-translate-y-2 hover:scale-[1.03] cursor-pointer">
-                    <img 
-                      src={`/photos/${encodeURIComponent(img)}`} 
-                      alt="Gym Facility" 
+                  <div key={j} className="relative w-64 sm:w-80 h-40 sm:h-56 shrink-0 group rounded-xl border border-white/10 transition-all duration-500 hover:border-[#0096C7] hover:shadow-[0_0_40px_rgba(0,150,199,0.5)] hover:-translate-y-2 hover:scale-[1.03] cursor-pointer overflow-hidden">
+                    <img
+                      src={`/photos/${encodeURIComponent(img)}`}
+                      alt="Gym Facility"
                       className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                       loading="lazy"
                     />
-                    <div className="absolute inset-0 bg-black/40 group-hover:bg-black/0 transition-colors duration-500"></div>
                   </div>
                 ))}
               </div>
@@ -190,7 +189,7 @@ export default function Home() {
               { name: 'Alli Vasquez', title: 'General Manager', image: 'https://arcofitgym.com/wp-content/uploads/2025/02/Alli-Vasquez.jpg' },
             ].map((person, i) => (
               <div key={i} className="reveal opacity-0 translate-y-8 transition-all duration-500 text-center group cursor-pointer" style={{ transitionDelay: `${i * 100}ms` }}>
-                <div className="w-full aspect-square bg-white/5 rounded-xl border border-white/10 mb-4 overflow-hidden transition-all duration-500 group-hover:border-[#0096C7]/60 group-hover:shadow-[0_0_25px_rgba(0,150,199,0.3)] group-hover:-translate-y-2 group-hover:scale-[1.03]">
+                <div className="w-full aspect-square bg-white/5 rounded-xl border border-white/10 mb-4 overflow-hidden transition-all duration-500 group-hover:border-[#0096C7] group-hover:shadow-[0_0_40px_rgba(0,150,199,0.5)] group-hover:-translate-y-2 group-hover:scale-[1.03]">
                   <img src={person.image} alt={person.name} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
                 </div>
                 <h3 className="font-bold text-xs sm:text-sm uppercase tracking-wider transition-colors duration-300 group-hover:text-[#0096C7]">{person.name}</h3>
