@@ -40,7 +40,7 @@ export default function Home() {
           className="absolute inset-0 w-full h-full object-cover"
         />
         <div className="absolute inset-0 bg-black/65" />
-        <div className="relative z-10 text-center px-4 w-full max-w-4xl mx-auto pt-20">
+        <div className="relative z-10 text-center px-2 sm:px-4 w-full max-w-4xl mx-auto pt-20">
           <p className="text-[#0096C7] text-xs font-bold tracking-[0.3em] uppercase mb-4 opacity-0 animate-[fadeUp_0.8s_ease_0.2s_forwards]">
             Fulshear, Texas
           </p>
@@ -48,18 +48,12 @@ export default function Home() {
             Fitness<br />
             <span className="text-[#0096C7]">By Design.</span>
           </h1>
-          <p className="text-white/70 text-sm sm:text-base md:text-lg max-w-xl mx-auto mb-8 opacity-0 animate-[fadeUp_0.8s_ease_0.6s_forwards]">
+          <p className="text-white/70 text-[13px] min-[400px]:text-sm sm:text-base md:text-lg max-w-[95%] sm:max-w-xl mx-auto mb-8 opacity-0 animate-[fadeUp_0.8s_ease_0.6s_forwards]">
             Science-based wellness, an inspiring community, and the highest-quality equipment at our 27,000 square-foot facility.
           </p>
-          <div className="flex flex-col sm:flex-row flex-wrap justify-center gap-3 opacity-0 animate-[fadeUp_0.8s_ease_0.8s_forwards]">
+          <div className="flex flex-col sm:flex-row flex-wrap justify-center items-center gap-3 opacity-0 animate-[fadeUp_0.8s_ease_0.8s_forwards]">
             <a href="https://arcofitgym.clubautomation.com/member-portal/locations/1/memberships" target="_blank" rel="noopener noreferrer" className="bg-[#0096C7] hover:bg-[#0077A8] text-white font-bold px-6 py-3 rounded transition-all hover:scale-105 tracking-wider uppercase text-xs">
               Membership Options
-            </a>
-            <a href="https://arcofitgym.com/more-information/" target="_blank" rel="noopener noreferrer" className="bg-white/10 hover:bg-white/20 border border-white/20 text-white font-bold px-6 py-3 rounded transition-all hover:scale-105 tracking-wider uppercase text-xs">
-              Schedule a Tour
-            </a>
-            <a href="/amenities" className="border border-[#0096C7] text-[#0096C7] hover:bg-[#0096C7] hover:text-white font-bold px-6 py-3 rounded transition-all hover:scale-105 tracking-wider uppercase text-xs">
-              Floor Plan
             </a>
             <a href="https://arcofitgym.vfpnext.com/embed/engage/form/11?Account=21585041&ClubID=1" target="_blank" rel="noopener noreferrer" className="border border-white/30 text-white/70 hover:border-white hover:text-white font-bold px-6 py-3 rounded transition-all hover:scale-105 tracking-wider uppercase text-xs">
               1-Day Pass
@@ -112,11 +106,14 @@ export default function Home() {
       {/* CTA BANNER */}
       <section className="reveal opacity-0 translate-y-8 transition-all duration-700 py-16 px-4 text-center">
         <h2 className="text-xl sm:text-2xl md:text-3xl font-black uppercase tracking-tight mb-3">
-          Have Questions? We'd Love to Answer Them
+          Have Questions?<br className="block sm:hidden" /> We'd Love to Answer Them
         </h2>
-        <p className="text-[#0096C7] font-bold text-sm sm:text-base tracking-wider uppercase">
+        <p className="text-[#0096C7] font-bold text-sm sm:text-base tracking-wider uppercase mb-8">
           Give You a Tour of Arco Fit! Please Stop In!
         </p>
+        <a href="/contact" className="inline-block bg-[#0096C7] hover:bg-[#0077A8] text-white font-bold px-8 py-4 rounded-lg transition-all shadow-[0_0_15px_rgba(0,150,199,0.3)] hover:shadow-[0_0_25px_rgba(0,150,199,0.5)] hover:-translate-y-1 tracking-wider uppercase text-sm">
+          Schedule A Tour
+        </a>
       </section>
 
       {/* SCIENCE SECTION */}
