@@ -104,16 +104,46 @@ export default function Home() {
       </section>
 
       {/* CTA BANNER */}
-      <section className="reveal opacity-0 translate-y-8 transition-all duration-700 py-16 px-4 text-center">
-        <h2 className="text-xl sm:text-2xl md:text-3xl font-black uppercase tracking-tight mb-3">
-          Have Questions?<br className="block sm:hidden" /> We'd Love to Answer Them
-        </h2>
-        <p className="text-[#0096C7] font-bold text-sm sm:text-base tracking-wider uppercase mb-8">
-          Give You a Tour of Arco Fit! Please Stop In!
-        </p>
-        <a href="/contact" className="inline-block bg-[#0096C7] hover:bg-[#0077A8] text-white font-bold px-8 py-4 rounded-lg transition-all shadow-[0_0_15px_rgba(0,150,199,0.3)] hover:shadow-[0_0_25px_rgba(0,150,199,0.5)] hover:-translate-y-1 tracking-wider uppercase text-sm">
-          Schedule A Tour
-        </a>
+      <section className="reveal opacity-0 translate-y-8 transition-all duration-700 py-16 text-center overflow-hidden">
+        <div className="px-4">
+          <h2 className="text-xl sm:text-2xl md:text-3xl font-black uppercase tracking-tight mb-3">
+            Have Questions?<br className="block sm:hidden" /> We'd Love to Answer Them
+          </h2>
+          <p className="text-[#0096C7] font-bold text-sm sm:text-base tracking-wider uppercase mb-8">
+            Give You a Tour of Arco Fit! Please Stop In!
+          </p>
+          <a href="/contact" className="inline-block bg-[#0096C7] hover:bg-[#0077A8] text-white font-bold px-8 py-4 rounded-lg transition-all shadow-[0_0_15px_rgba(0,150,199,0.3)] hover:shadow-[0_0_25px_rgba(0,150,199,0.5)] hover:-translate-y-1 tracking-wider uppercase text-sm mb-16 relative z-10">
+            Schedule A Tour
+          </a>
+        </div>
+
+        {/* INFINITE PHOTO SCROLLER */}
+        <div className="relative w-full mt-2 -px-4 mx-auto max-w-[100vw] overflow-hidden">
+          {/* Black fade gradients for edge blending */}
+          <div className="absolute inset-y-0 left-0 w-16 sm:w-32 bg-gradient-to-r from-black via-black/80 to-transparent z-10 pointer-events-none"></div>
+          <div className="absolute inset-y-0 right-0 w-16 sm:w-32 bg-gradient-to-l from-black via-black/80 to-transparent z-10 pointer-events-none"></div>
+          
+          <div className="flex w-[max-content] animate-marquee gap-6 px-2 py-8 hover:[animation-play-state:paused] items-center">
+            {/* Render two identical groups side by side for a seamless infinite loop */}
+            {[...Array(2)].map((_, i) => (
+              <div key={i} className="flex gap-6">
+                {[
+                  'acrofit sign.jpg', 'cardio section.jpg', 'custom saunas.jpg', 'group fitness.jpeg', 'gym 1.jpg', 'gym 2.jpg', 'gym 3.jpg', 'gym 4.jpg', 'gym floor.jpg', 'locker rom.jpeg', 'revitalize.jpg', 'world class equipment.jpg', 'yoga and pilates.jpeg'
+                ].map((img, j) => (
+                  <div key={j} className="relative w-64 sm:w-80 h-40 sm:h-56 rounded-xl overflow-hidden shrink-0 group border border-white/10 transition-all duration-500 hover:border-[#0096C7]/60 hover:shadow-[0_0_25px_rgba(0,150,199,0.3)] hover:-translate-y-2 hover:scale-[1.03] cursor-pointer">
+                    <img 
+                      src={`/photos/${encodeURIComponent(img)}`} 
+                      alt="Gym Facility" 
+                      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                      loading="lazy"
+                    />
+                    <div className="absolute inset-0 bg-black/40 group-hover:bg-black/0 transition-colors duration-500"></div>
+                  </div>
+                ))}
+              </div>
+            ))}
+          </div>
+        </div>
       </section>
 
       {/* SCIENCE SECTION */}
