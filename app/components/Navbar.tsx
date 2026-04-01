@@ -59,7 +59,7 @@ export default function Navbar({ activePage = '' }: NavbarProps) {
               </div>
             </div>
             <a href="/amenities" className={linkClass('amenities')}>Amenities</a>
-            <a href="#" className="hover:text-[#0096C7] transition-colors">Membership</a>
+            <a href="https://arcofitgym.clubautomation.com/member-portal/locations/1/memberships" target="_blank" rel="noopener noreferrer" className="hover:text-[#0096C7] transition-colors">Membership</a>
             <a href="/about-us" className={linkClass('about-us')}>About</a>
             <a href="/events" className={linkClass('events')}>Events</a>
           </div>

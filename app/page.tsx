@@ -31,9 +31,13 @@ export default function Home() {
 
       {/* HERO */}
       <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-        <div
-          className="absolute inset-0 bg-cover bg-center"
-          style={{ backgroundImage: `url('https://arcofitgym.com/wp-content/uploads/2025/04/dji_fly_20250413_194721_0_1744591641994_photo_low_qualitya.jpg?id=2071')` }}
+        <video
+          src="/videos/arco-hero.mp4"
+          autoPlay
+          loop
+          muted
+          playsInline
+          className="absolute inset-0 w-full h-full object-cover"
         />
         <div className="absolute inset-0 bg-black/65" />
         <div className="relative z-10 text-center px-4 w-full max-w-4xl mx-auto pt-20">
@@ -127,7 +131,7 @@ export default function Home() {
             <p className="text-white/50 leading-relaxed mb-8 text-sm sm:text-base">
               We strive to provide a learning environment run by experienced and successful coaches. Our most important goal is to create a welcoming atmosphere and community in which everyone feels a sense of belonging.
             </p>
-            <a href="#" className="bg-[#0096C7] hover:bg-[#0077A8] text-white font-bold px-8 py-3 rounded transition-all hover:scale-105 tracking-wider uppercase text-xs inline-block">
+            <a href="https://arcofitgym.clubautomation.com/member-portal/locations/1/memberships" target="_blank" rel="noopener noreferrer" className="bg-[#0096C7] hover:bg-[#0077A8] text-white font-bold px-8 py-3 rounded transition-all hover:scale-105 tracking-wider uppercase text-xs inline-block">
               Membership Options
             </a>
           </div>

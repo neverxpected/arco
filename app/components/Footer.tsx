@@ -49,7 +49,12 @@ export default function Footer() {
         </div>
       </div>
       <div className="max-w-7xl mx-auto mt-10 pt-8 border-t border-white/10 flex flex-col items-center gap-4">
-        <img src="https://arcofitgym.com/wp-content/uploads/2026/01/RYS200-300x300.png" alt="Registered Yoga School RYS 200" className="w-20 h-20 invert brightness-200 opacity-60" />
+        <img 
+          src="https://arcofitgym.com/wp-content/uploads/2026/01/RYS200-300x300.png" 
+          alt="Registered Yoga School RYS 200" 
+          className="w-20 h-20 invert brightness-[2.5] hue-rotate-[190deg] saturate-[2.5] opacity-80 style-mix-blend-screen" 
+          style={{ mixBlendMode: 'screen' }}
+        />
         <p className="text-white/20 text-xs">Copyright 2026 Arco Fit Gym &amp; Wellness</p>
       </div>
     </footer>

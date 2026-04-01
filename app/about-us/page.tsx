@@ -225,7 +225,7 @@ export default function AboutPage() {
             Come visit our 27,000 sq. ft. facility and see why Arco Fit is the premier fitness destination in Fulshear.
           </p>
           <div className="flex flex-col sm:flex-row justify-center gap-4">
-            <a href="#" className="bg-[#0096C7] hover:bg-[#0077A8] text-white font-bold px-8 py-3 rounded transition-all hover:scale-105 tracking-wider uppercase text-xs">
+            <a href="https://arcofitgym.clubautomation.com/member-portal/locations/1/memberships" target="_blank" rel="noopener noreferrer" className="bg-[#0096C7] hover:bg-[#0077A8] text-white font-bold px-8 py-3 rounded transition-all hover:scale-105 tracking-wider uppercase text-xs">
               Membership Options
             </a>
             <a href="#" className="border border-white/20 hover:border-white/40 text-white font-bold px-8 py-3 rounded transition-all hover:scale-105 tracking-wider uppercase text-xs">
