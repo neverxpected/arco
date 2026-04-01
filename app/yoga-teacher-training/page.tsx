@@ -83,13 +83,13 @@ export default function YogaTeacherTrainingPage() {
         <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-12 items-center">
           <div className="reveal opacity-0 translate-y-8 transition-all duration-700">
             <p className="text-[#0096C7] text-xs font-bold tracking-[0.3em] uppercase mb-3">The Program</p>
-            <h2 className="text-3xl sm:text-4xl font-black uppercase mb-6">Ancient Wisdom, <span className="text-[#0096C7]">Modern Approach</span></h2>
+            <h2 className="text-3xl sm:text-4xl font-black uppercase mb-6 drop-shadow-sm leading-[1.1]">Ancient Wisdom,<br /> <span className="text-[#0096C7]">Modern Approach</span></h2>
             <p className="text-white/60 leading-relaxed text-sm sm:text-base mb-4">Immerse yourself in a transformative 200-hour Yoga Teacher Training designed to deepen your practice and empower you with the tools to confidently lead others on their yoga journey.</p>
             <p className="text-white/60 leading-relaxed text-sm sm:text-base">This comprehensive training weaves together the ancient wisdom of yoga with a functional, modern approach to movement, mindfulness, and teaching. Whether you aspire to teach or simply wish to enrich your own practice, this training offers a powerful journey of self-discovery, connection, and embodied wisdom.</p>
           </div>
           <div className="reveal opacity-0 translate-y-8 transition-all duration-700" style={{ transitionDelay: '200ms' }}>
-            <div className="rounded-xl overflow-hidden border border-white/10">
-              <img src="https://arcofitgym.com/wp-content/uploads/2025/07/IMG_2374CR3a-1024x683.jpg" alt="Yoga practice at Arco Fit" className="w-full h-auto" />
+            <div className="rounded-xl overflow-hidden border border-white/10 aspect-video md:aspect-square lg:aspect-video">
+              <img src="/photos/yoga%201.jpg" alt="Yoga practice at Arco Fit" className="w-full h-full object-cover" />
             </div>
           </div>
         </div>
