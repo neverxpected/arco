@@ -222,7 +222,8 @@ export default function Home() {
             <p className="text-[#0096C7] text-xs font-bold tracking-[0.3em] uppercase mb-3">Visit Us</p>
             <h2 className="text-3xl sm:text-4xl font-black uppercase mb-4">Our Location</h2>
             <p className="text-white/60 text-sm">
-              6527 Skyline Dr. Building C, Fulshear, TX 77441
+              6527 Skyline Dr. Building C<br />
+              Fulshear, TX 77441
             </p>
           </div>
           <div className="reveal opacity-0 translate-y-8 transition-all duration-700 w-full max-w-5xl h-[400px] sm:h-[500px] rounded-2xl overflow-hidden border border-white/10 bg-white/5 p-2 shadow-[0_0_30px_rgba(0,0,0,0.5)]">

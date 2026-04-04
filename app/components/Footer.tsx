@@ -7,7 +7,7 @@ export default function Footer() {
             <span className="text-white">ARCO</span><span className="text-[#0096C7]">FIT</span>
           </div>
           <p className="text-white/40 text-sm leading-relaxed">27,000 square feet of science-based fitness. Personal training, group fitness, Yoga, Reformer Pilates available.</p>
-          <p className="text-white/40 text-sm mt-4">6527 Skyline Dr.<br />Building C<br />Fulshear, TX 77441</p>
+          <p className="text-white/40 text-sm mt-4">6527 Skyline Dr. Building C<br />Fulshear, TX 77441</p>
         </div>
         <div>
           <h4 className="text-xs font-bold tracking-widest uppercase text-white/60 mb-4">Navigation</h4>

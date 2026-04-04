@@ -57,7 +57,7 @@ export default function ContactPage() {
                   </div>
                   <div>
                     <h4 className="text-white/40 text-xs font-bold uppercase tracking-wider mb-1">Location</h4>
-                    <p className="text-sm">6527 Skyline Dr.<br />Building C<br />Fulshear, TX 77441</p>
+                    <p className="text-sm">6527 Skyline Dr. Building C<br />Fulshear, TX 77441</p>
                   </div>
                 </div>
 
