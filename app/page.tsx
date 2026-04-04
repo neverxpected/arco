@@ -78,8 +78,8 @@ export default function Home() {
             Fulshear, Texas
           </p>
           <h1 className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-black uppercase leading-none mb-6 opacity-0 animate-[fadeUp_0.8s_ease_0.4s_forwards]">
-            Fitness<br />
-            <span className="text-[#0096C7]">By Design.</span>
+            What&apos;s<br />
+            <span className="text-[#0096C7]">Your Goal?</span>
           </h1>
           <p className="text-white/70 text-[13px] min-[400px]:text-sm sm:text-base md:text-lg max-w-[95%] sm:max-w-xl mx-auto mb-8 opacity-0 animate-[fadeUp_0.8s_ease_0.6s_forwards]">
             Science-based wellness, an inspiring community, and the highest-quality equipment at our 27,000 square-foot facility.
