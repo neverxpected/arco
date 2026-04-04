@@ -32,7 +32,7 @@ export default function Home() {
       {/* HERO */}
       <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
         <video
-          src="/videos/arco-hero.mp4"
+          src="/videos/arco-hero-vid3.mp4"
           autoPlay
           loop
           muted
@@ -41,7 +41,7 @@ export default function Home() {
         />
         <div className="absolute inset-0 bg-black/35" />
         <div className="relative z-10 text-center px-2 sm:px-4 w-full max-w-4xl mx-auto pt-20">
-          <p className="text-[#0096C7] text-xs font-bold tracking-[0.3em] uppercase mb-4 opacity-0 animate-[fadeUp_0.8s_ease_0.2s_forwards]">
+          <p className="text-[#0096C7] text-xs font-bold tracking-[0.3em] uppercase mb-1 opacity-0 animate-[fadeUp_0.8s_ease_0.2s_forwards]">
             Fulshear, Texas
           </p>
           <h1 className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-black uppercase leading-none mb-6 opacity-0 animate-[fadeUp_0.8s_ease_0.4s_forwards]">
