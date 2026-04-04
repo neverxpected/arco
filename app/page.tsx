@@ -6,36 +6,44 @@ import Footer from './components/Footer';
 
 export default function Home() {
   const observerRef = useRef<IntersectionObserver | null>(null);
-  const videoRef = useRef<HTMLVideoElement | null>(null);
+  const heroVideoRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
-    const video = videoRef.current;
-    if (!video) return;
+    const container = heroVideoRef.current;
+    if (!container) return;
 
-    // React has a bug where the `muted` JSX attribute doesn't always
-    // get applied to the DOM element. iOS Safari checks the DOM attribute
-    // to decide autoplay eligibility, so we must set it explicitly.
-    video.defaultMuted = true;
+    // Create the video element entirely via DOM APIs to bypass
+    // React's bug where the muted attribute doesn't get applied
+    // to the actual DOM node. iOS Safari requires muted + playsinline
+    // to be present in the DOM for autoplay to work.
+    const video = document.createElement('video');
+    video.src = '/videos/arco-hero-vid3.mp4';
+    video.autoplay = true;
+    video.loop = true;
     video.muted = true;
+    video.defaultMuted = true;
+    video.playsInline = true;
+    video.preload = 'auto';
     video.setAttribute('muted', '');
     video.setAttribute('playsinline', '');
     video.setAttribute('webkit-playsinline', '');
+    video.className = 'absolute inset-0 w-full h-full object-cover';
 
+    container.appendChild(video);
+
+    // Try to play immediately and on data-ready events
     const tryPlay = () => {
       video.play().catch(() => {});
     };
-
-    // Try immediately
     tryPlay();
-
-    // Also try once the video has enough data to play
-    video.addEventListener('canplay', tryPlay, { once: true });
-    // And on loadedmetadata as an earlier fallback
     video.addEventListener('loadedmetadata', tryPlay, { once: true });
+    video.addEventListener('canplay', tryPlay, { once: true });
 
     return () => {
-      video.removeEventListener('canplay', tryPlay);
-      video.removeEventListener('loadedmetadata', tryPlay);
+      video.pause();
+      video.removeAttribute('src');
+      video.load();
+      container.removeChild(video);
     };
   }, []);
 
@@ -63,19 +71,7 @@ export default function Home() {
 
       {/* HERO */}
       <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-        <video
-          ref={videoRef}
-          src="/videos/arco-hero-vid3.mp4"
-          autoPlay
-          loop
-          muted
-          playsInline
-          webkit-playsinline="true"
-          preload="auto"
-          disablePictureInPicture
-          disableRemotePlayback
-          className="absolute inset-0 w-full h-full object-cover"
-        />
+        <div ref={heroVideoRef} className="absolute inset-0" />
         <div className="absolute inset-0 bg-black/35" />
         <div className="relative z-10 text-center px-2 sm:px-4 w-full max-w-4xl mx-auto pt-20">
           <p className="text-[#0096C7] text-xs font-bold tracking-[0.3em] uppercase mb-1 opacity-0 animate-[fadeUp_0.8s_ease_0.2s_forwards]">

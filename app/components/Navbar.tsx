@@ -81,8 +81,8 @@ export default function Navbar({ activePage = '' }: NavbarProps) {
 
       {/* MOBILE MENU */}
       <div className={`fixed inset-0 z-40 bg-black/95 backdrop-blur-md transition-all duration-500 md:hidden flex flex-col ${mobileMenuOpen ? 'opacity-100 visible' : 'opacity-0 invisible pointer-events-none'}`}>
-        <div className="pt-20 px-6 flex-1 overflow-y-auto">
-          <div className="flex flex-col gap-1">
+        <div className="pt-20 px-8 flex-1 overflow-y-auto">
+          <div className="flex flex-col gap-1 max-w-md mx-auto">
             {mobileLinks.map((link) => (
               <a
                 key={link.label}
@@ -94,11 +94,11 @@ export default function Navbar({ activePage = '' }: NavbarProps) {
               </a>
             ))}
           </div>
-          <div className="mt-8 flex flex-col gap-3">
-            <a href="https://arcofitgym.clubautomation.com/member-portal/locations/1/memberships" target="_blank" rel="noopener noreferrer" className="bg-[#0096C7] hover:bg-[#0077A8] text-white font-bold px-6 py-3 rounded text-center tracking-wider uppercase text-xs transition-colors">
+          <div className="mt-8 flex flex-col gap-3 max-w-md mx-auto">
+            <a href="https://arcofitgym.clubautomation.com/member-portal/locations/1/memberships" target="_blank" rel="noopener noreferrer" className="w-full bg-[#0096C7] hover:bg-[#0077A8] text-white font-bold px-6 py-3 rounded text-center tracking-wider uppercase text-xs transition-colors">
               Membership Options
             </a>
-            <a href="tel:3465532726" className="border border-white/20 text-white font-bold px-6 py-3 rounded text-center tracking-wider uppercase text-xs">
+            <a href="tel:3465532726" className="w-full border border-white/20 text-white font-bold px-6 py-3 rounded text-center tracking-wider uppercase text-xs">
               346-553-ARCO
             </a>
           </div>
