@@ -9,14 +9,34 @@ export default function Home() {
   const videoRef = useRef<HTMLVideoElement | null>(null);
 
   useEffect(() => {
-    // Force autoplay on mobile - browsers may block autoPlay attribute
     const video = videoRef.current;
-    if (video) {
-      video.play().catch(() => {
-        // Autoplay was prevented; nothing to do since muted autoplay
-        // should be allowed on all modern browsers
-      });
-    }
+    if (!video) return;
+
+    // React has a bug where the `muted` JSX attribute doesn't always
+    // get applied to the DOM element. iOS Safari checks the DOM attribute
+    // to decide autoplay eligibility, so we must set it explicitly.
+    video.defaultMuted = true;
+    video.muted = true;
+    video.setAttribute('muted', '');
+    video.setAttribute('playsinline', '');
+    video.setAttribute('webkit-playsinline', '');
+
+    const tryPlay = () => {
+      video.play().catch(() => {});
+    };
+
+    // Try immediately
+    tryPlay();
+
+    // Also try once the video has enough data to play
+    video.addEventListener('canplay', tryPlay, { once: true });
+    // And on loadedmetadata as an earlier fallback
+    video.addEventListener('loadedmetadata', tryPlay, { once: true });
+
+    return () => {
+      video.removeEventListener('canplay', tryPlay);
+      video.removeEventListener('loadedmetadata', tryPlay);
+    };
   }, []);
 
   useEffect(() => {
@@ -52,6 +72,8 @@ export default function Home() {
           playsInline
           webkit-playsinline="true"
           preload="auto"
+          disablePictureInPicture
+          disableRemotePlayback
           className="absolute inset-0 w-full h-full object-cover"
         />
         <div className="absolute inset-0 bg-black/35" />
