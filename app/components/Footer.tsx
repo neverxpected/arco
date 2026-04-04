@@ -3,8 +3,8 @@ export default function Footer() {
     <footer className="bg-[#0A0A0A] border-t border-white/10 py-14 px-4">
       <div className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-10">
         <div>
-          <div className="text-xl font-black mb-4">
-            <span className="text-white">ARCO</span><span className="text-[#0096C7]">FIT</span>
+          <div className="mb-4">
+            <img src="/logos/ArcoFit-logo-main white(ABC).png" alt="Arco Fit" className="h-10 w-auto" />
           </div>
           <p className="text-white/40 text-sm leading-relaxed">27,000 square feet of science-based fitness. Personal training, group fitness, Yoga, Reformer Pilates available.</p>
           <p className="text-white/40 text-sm mt-4">6527 Skyline Dr. Building C<br />Fulshear, TX 77441</p>

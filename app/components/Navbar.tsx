@@ -34,10 +34,9 @@ export default function Navbar({ activePage = '' }: NavbarProps) {
   return (
     <>
       <nav className="fixed top-0 w-full z-50 bg-black/80 backdrop-blur-md border-b border-white/10">
-        <div className="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
-          <a href="/" className="text-xl font-black tracking-tight">
-            <span className="text-white">ARCO</span>
-            <span className="text-[#0096C7]">FIT</span>
+        <div className="max-w-7xl mx-auto px-4 pr-5 py-3 flex items-center justify-between" style={{ paddingRight: 'max(1.25rem, env(safe-area-inset-right, 1.25rem))' }}>
+          <a href="/" className="flex items-center">
+            <img src="/logos/ArcoFit-logo-main white(ABC).png" alt="Arco Fit" className="h-10 w-auto" />
           </a>
           <div className="hidden md:flex items-center gap-6 text-xs font-medium tracking-widest uppercase text-white/70">
             <a href="/" className={linkClass('home')}>Home</a>
@@ -69,12 +68,12 @@ export default function Navbar({ activePage = '' }: NavbarProps) {
             </a>
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="md:hidden w-9 h-9 flex flex-col items-center justify-center gap-1.5"
+              className="md:hidden w-10 h-10 flex flex-col items-center justify-center gap-1.5 mr-3"
               aria-label="Toggle menu"
             >
-              <span className={`block w-5 h-0.5 bg-white transition-all duration-300 ${mobileMenuOpen ? 'rotate-45 translate-y-[4px]' : ''}`} />
-              <span className={`block w-5 h-0.5 bg-white transition-all duration-300 ${mobileMenuOpen ? 'opacity-0' : ''}`} />
-              <span className={`block w-5 h-0.5 bg-white transition-all duration-300 ${mobileMenuOpen ? '-rotate-45 -translate-y-[4px]' : ''}`} />
+              <span className={`block w-6 h-[2px] bg-white transition-all duration-300 origin-center ${mobileMenuOpen ? 'rotate-45 translate-y-2' : ''}`} />
+              <span className={`block w-6 h-[2px] bg-white transition-all duration-300 ${mobileMenuOpen ? 'opacity-0 scale-0' : ''}`} />
+              <span className={`block w-6 h-[2px] bg-white transition-all duration-300 origin-center ${mobileMenuOpen ? '-rotate-45 -translate-y-2' : ''}`} />
             </button>
           </div>
         </div>
