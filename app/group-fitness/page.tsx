@@ -145,7 +145,7 @@ const categoryColors: Record<ClassCategory, string> = {
   Yoga: 'bg-purple-500/20 text-purple-400 border-purple-500/30',
   Pilates: 'bg-pink-500/20 text-pink-400 border-pink-500/30',
   Dance: 'bg-amber-500/20 text-amber-400 border-amber-500/30',
-  Conditioning: 'bg-[#0096C7]/20 text-[#0096C7] border-[#0096C7]/30',
+  Conditioning: 'bg-[#007CAF]/20 text-[#007CAF] border-[#007CAF]/30',
 };
 
 export default function GroupFitnessPage() {
@@ -184,29 +184,29 @@ export default function GroupFitnessPage() {
   }, [activeCategory]);
 
   return (
-    <main className="bg-black text-white">
+    <main className="bg-white text-slate-900">
 
       <Navbar activePage="group-fitness" />
 
       {/* HERO */}
       <section className="relative pt-32 pb-20 px-4 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-b from-[#0096C7]/10 via-transparent to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-b from-[#007CAF]/5 via-transparent to-transparent" />
         <div className="relative z-10 max-w-7xl mx-auto text-center">
-          <p className="text-[#0096C7] text-xs font-bold tracking-[0.3em] uppercase mb-4 opacity-0 animate-[fadeUp_0.8s_ease_0.2s_forwards]">
+          <p className="text-[#007CAF] text-xs font-bold tracking-[0.3em] uppercase mb-4 opacity-0 animate-[fadeUp_0.8s_ease_0.2s_forwards]">
             Movement by Design
           </p>
           <h1 className="text-4xl sm:text-6xl md:text-7xl font-black uppercase leading-none mb-6 opacity-0 animate-[fadeUp_0.8s_ease_0.4s_forwards]">
             Group<br />
-            <span className="text-[#0096C7]">Fitness</span>
+            <span className="text-[#007CAF]">Fitness</span>
           </h1>
-          <p className="text-white/50 text-sm sm:text-base max-w-2xl mx-auto mb-8 opacity-0 animate-[fadeUp_0.8s_ease_0.6s_forwards]">
+          <p className="text-slate-500 text-sm sm:text-base max-w-2xl mx-auto mb-8 opacity-0 animate-[fadeUp_0.8s_ease_0.6s_forwards]">
             Every movement serves a purpose, every class is built with intention, and every progression is designed to strengthen you from the inside out.
           </p>
           <a
             href="https://arcofitgym.com/group-fitness/schedule/"
             target="_blank"
             rel="noopener noreferrer"
-            className="bg-[#0096C7] hover:bg-[#0077A8] text-white font-bold px-8 py-3 rounded transition-all hover:scale-105 tracking-wider uppercase text-xs inline-block opacity-0 animate-[fadeUp_0.8s_ease_0.8s_forwards]"
+            className="bg-[#007CAF] hover:brightness-110 text-white font-bold px-8 py-3 rounded transition-all hover:scale-105 tracking-wider uppercase text-xs inline-block opacity-0 animate-[fadeUp_0.8s_ease_0.8s_forwards]"
           >
             View Schedule
           </a>
@@ -222,7 +222,7 @@ export default function GroupFitnessPage() {
               onClick={() => setActiveCategory(cat)}
               className={`px-4 py-2 rounded-full text-xs font-bold uppercase tracking-wider border transition-all duration-300 ${
                 activeCategory === cat
-                  ? 'bg-[#0096C7] border-[#0096C7] text-white'
+                  ? 'bg-[#007CAF] border-[#007CAF] text-white'
                   : 'border-white/20 text-white/50 hover:border-white/40 hover:text-white/80'
               }`}
             >
@@ -241,14 +241,14 @@ export default function GroupFitnessPage() {
               className="reveal opacity-0 translate-y-8 transition-all duration-700 group"
               style={{ transitionDelay: `${(i % 6) * 80}ms` }}
             >
-              <div className="h-full border border-gray-200 rounded-xl overflow-hidden flex flex-col transition-all duration-500 hover:border-[#0096C7]/60 hover:shadow-[0_0_30px_rgba(0,150,199,0.15)] hover:-translate-y-1">
+              <div className="h-full border border-gray-200 rounded-xl overflow-hidden flex flex-col transition-all duration-500 hover:border-[#007CAF]/60 hover:shadow-[0_0_20px_rgba(0,124,175,0.1)] hover:-translate-y-1">
                 {/* Dark Top */}
                 <div className="bg-[#111111] p-6 pb-5 flex items-center justify-between">
                   <div className="flex items-center gap-4">
                     <span className={`text-[10px] font-bold uppercase tracking-widest px-3 py-1 rounded-full border ${categoryColors[cls.category]}`}>
                       {cls.category}
                     </span>
-                    <h3 className="text-white text-base sm:text-lg font-bold group-hover:text-[#0096C7] transition-colors duration-300 leading-tight">
+                    <h3 className="text-white text-base sm:text-lg font-bold group-hover:text-[#007CAF] transition-colors duration-300 leading-tight">
                       {cls.name}
                     </h3>
                   </div>
@@ -267,16 +267,16 @@ export default function GroupFitnessPage() {
       </section>
 
       {/* PHILOSOPHY */}
-      <section className="bg-[#0A0A0A] py-20 px-4 border-y border-white/10">
+      <section className="bg-slate-50 py-20 px-4 border-y border-slate-200">
         <div className="max-w-4xl mx-auto text-center reveal opacity-0 translate-y-8 transition-all duration-700">
-          <p className="text-[#0096C7] text-xs font-bold tracking-[0.3em] uppercase mb-3">Our Philosophy</p>
-          <h2 className="text-3xl sm:text-4xl font-black uppercase mb-8">Movement by <span className="text-[#0096C7]">Design</span></h2>
-          <div className="bg-white/[0.03] border border-white/10 rounded-2xl p-8 sm:p-12 relative overflow-hidden">
-            <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-[#0096C7] to-transparent" />
-            <p className="text-white/60 leading-relaxed text-sm sm:text-base mb-4">
+          <p className="text-[#007CAF] text-xs font-bold tracking-[0.3em] uppercase mb-3">Our Philosophy</p>
+          <h2 className="text-3xl sm:text-4xl font-black uppercase mb-8">Movement by <span className="text-[#007CAF]">Design</span></h2>
+          <div className="bg-slate-50 border border-slate-200 rounded-2xl p-8 sm:p-12 relative overflow-hidden">
+            <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-[#007CAF] to-transparent" />
+            <p className="text-slate-600 leading-relaxed text-sm sm:text-base mb-4">
               This is more than a workout—it&apos;s a method. Rooted in simplicity, elevated by precision, and made to build sustainable, adaptable, real-world strength.
             </p>
-            <p className="text-white/60 leading-relaxed text-sm sm:text-base">
+            <p className="text-slate-600 leading-relaxed text-sm sm:text-base">
               Whether you&apos;re rebuilding, refining, or ready to elevate your practice, Movement by Design meets you where you are—and moves you forward.
             </p>
           </div>
@@ -296,20 +296,20 @@ export default function GroupFitnessPage() {
               className="reveal opacity-0 translate-y-8 transition-all duration-700 text-center"
               style={{ transitionDelay: `${i * 100}ms` }}
             >
-              <div className="text-3xl sm:text-4xl md:text-5xl font-black text-[#0096C7] mb-2">{stat.number}</div>
-              <p className="text-white/40 text-xs sm:text-sm uppercase tracking-widest font-medium">{stat.label}</p>
+              <div className="text-3xl sm:text-4xl md:text-5xl font-black text-[#007CAF] mb-2">{stat.number}</div>
+              <p className="text-slate-400 text-xs sm:text-sm uppercase tracking-widest font-medium">{stat.label}</p>
             </div>
           ))}
         </div>
       </section>
 
       {/* CTA */}
-      <section className="reveal opacity-0 translate-y-8 transition-all duration-700 bg-[#0A0A0A] py-20 px-4">
+      <section className="reveal opacity-0 translate-y-8 transition-all duration-700 bg-slate-50 py-20 px-4">
         <div className="max-w-3xl mx-auto text-center">
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-black uppercase mb-4">
-            Find Your <span className="text-[#0096C7]">Class</span>
+            Find Your <span className="text-[#007CAF]">Class</span>
           </h2>
-          <p className="text-white/50 text-sm sm:text-base mb-8 max-w-xl mx-auto">
+          <p className="text-slate-500 text-sm sm:text-base mb-8 max-w-xl mx-auto">
             From strength training to yoga, HIIT to dance — there&apos;s a class for every body and every goal. Check the schedule and reserve your spot.
           </p>
           <div className="flex flex-col sm:flex-row justify-center gap-4">
@@ -317,7 +317,7 @@ export default function GroupFitnessPage() {
               href="https://arcofitgym.com/group-fitness/schedule/"
               target="_blank"
               rel="noopener noreferrer"
-              className="bg-[#0096C7] hover:bg-[#0077A8] text-white font-bold px-8 py-3 rounded transition-all hover:scale-105 tracking-wider uppercase text-xs"
+              className="bg-[#007CAF] hover:brightness-110 text-white font-bold px-8 py-3 rounded transition-all hover:scale-105 tracking-wider uppercase text-xs"
             >
               View Schedule
             </a>

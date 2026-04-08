@@ -23,7 +23,7 @@ export default async function StaffPortalPage() {
               />
             </a>
             <div className="h-6 w-px bg-white/20" />
-            <span className="text-xs font-bold tracking-widest uppercase text-[#0096C7]">
+            <span className="text-xs font-bold tracking-widest uppercase text-[#007CAF]">
               Staff Portal
             </span>
           </div>
@@ -58,7 +58,7 @@ export default async function StaffPortalPage() {
           </p>
           <a
             href="/"
-            className="text-xs text-[#0096C7] hover:text-white transition-colors"
+            className="text-xs text-[#007CAF] hover:text-white transition-colors"
           >
             ← Back to Public Site
           </a>

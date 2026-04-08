@@ -231,62 +231,62 @@ export default function AmenitiesPage() {
   }, []);
 
   return (
-    <main className="bg-black text-white">
+    <main className="bg-white text-slate-900">
       {/* NAV */}
       <nav className="fixed top-0 w-full z-50 bg-black/80 backdrop-blur-md border-b border-white/10">
         <div className="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
-          <a href="/" className="text-xl font-black tracking-tight"><span className="text-white">ARCO</span><span className="text-[#0096C7]">FIT</span></a>
+          <a href="/" className="text-xl font-black tracking-tight"><span className="text-white">ARCO</span><span className="text-[#007CAF]">FIT</span></a>
           <div className="hidden md:flex items-center gap-6 text-xs font-medium tracking-widest uppercase text-white/70">
-            <a href="/" className="hover:text-[#0096C7] transition-colors">Home</a>
+            <a href="/" className="hover:text-[#007CAF] transition-colors">Home</a>
             <div className="relative group">
-              <a href="/group-fitness" className="hover:text-[#0096C7] transition-colors flex items-center gap-1">Group Fitness<svg xmlns="http://www.w3.org/2000/svg" className="w-3 h-3 transition-transform group-hover:rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" /></svg></a>
-              <div className="absolute top-full left-0 mt-2 w-48 bg-black/95 backdrop-blur-md border border-white/10 rounded-lg py-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 translate-y-1 group-hover:translate-y-0">
-                <a href="/group-fitness" className="block px-4 py-2 text-white/60 hover:text-[#0096C7] hover:bg-white/5 transition-colors normal-case tracking-normal text-xs">Group Fitness</a>
-                <a href="/reformer-pilates" className="block px-4 py-2 text-white/60 hover:text-[#0096C7] hover:bg-white/5 transition-colors normal-case tracking-normal text-xs">Reformer Pilates</a>
-                <a href="/yoga-teacher-training" className="block px-4 py-2 text-white/60 hover:text-[#0096C7] hover:bg-white/5 transition-colors normal-case tracking-normal text-xs">Yoga Teacher Training</a>
-                <a href="/schedule" className="block px-4 py-2 text-white/60 hover:text-[#0096C7] hover:bg-white/5 transition-colors normal-case tracking-normal text-xs">Schedule</a>
+              <a href="/group-fitness" className="hover:text-[#007CAF] transition-colors flex items-center gap-1">Group Fitness<svg xmlns="http://www.w3.org/2000/svg" className="w-3 h-3 transition-transform group-hover:rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" /></svg></a>
+              <div className="absolute top-full left-0 mt-2 w-48 bg-black/95 backdrop-blur-md border border-slate-200 rounded-lg py-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 translate-y-1 group-hover:translate-y-0">
+                <a href="/group-fitness" className="block px-4 py-2 text-white/60 hover:text-[#007CAF] hover:bg-slate-100 transition-colors normal-case tracking-normal text-xs">Group Fitness</a>
+                <a href="/reformer-pilates" className="block px-4 py-2 text-white/60 hover:text-[#007CAF] hover:bg-slate-100 transition-colors normal-case tracking-normal text-xs">Reformer Pilates</a>
+                <a href="/yoga-teacher-training" className="block px-4 py-2 text-white/60 hover:text-[#007CAF] hover:bg-slate-100 transition-colors normal-case tracking-normal text-xs">Yoga Teacher Training</a>
+                <a href="/schedule" className="block px-4 py-2 text-white/60 hover:text-[#007CAF] hover:bg-slate-100 transition-colors normal-case tracking-normal text-xs">Schedule</a>
               </div>
             </div>
-            <a href="/amenities" className="text-[#0096C7]">Amenities</a>
-            <a href="https://arcofitgym.clubautomation.com/member-portal/locations/1/memberships" target="_blank" rel="noopener noreferrer" className="hover:text-[#0096C7] transition-colors">Membership</a>
-            <a href="/about-us" className="hover:text-[#0096C7] transition-colors">About</a>
-            <a href="/events" className="hover:text-[#0096C7] transition-colors">Events</a>
+            <a href="/amenities" className="text-[#007CAF]">Amenities</a>
+            <a href="https://arcofitgym.clubautomation.com/member-portal/locations/1/memberships" target="_blank" rel="noopener noreferrer" className="hover:text-[#007CAF] transition-colors">Membership</a>
+            <a href="/about-us" className="hover:text-[#007CAF] transition-colors">About</a>
+            <a href="/events" className="hover:text-[#007CAF] transition-colors">Events</a>
           </div>
-          <a href="tel:3465532726" className="bg-[#0096C7] hover:bg-[#0077A8] text-white text-xs font-bold px-4 py-2 rounded transition-colors tracking-wider">346-553-ARCO</a>
+          <a href="tel:3465532726" className="bg-[#007CAF] hover:brightness-110 text-white text-xs font-bold px-4 py-2 rounded transition-colors tracking-wider">346-553-ARCO</a>
         </div>
       </nav>
 
       {/* HERO */}
       <section className="relative pt-32 pb-20 px-4 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-b from-[#0096C7]/10 via-transparent to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-b from-[#007CAF]/5 via-transparent to-transparent" />
         <div className="relative z-10 max-w-7xl mx-auto text-center">
-          <p className="text-[#0096C7] text-xs font-bold tracking-[0.3em] uppercase mb-4 opacity-0 animate-[fadeUp_0.8s_ease_0.2s_forwards]">27,000 Square Feet</p>
+          <p className="text-[#007CAF] text-xs font-bold tracking-[0.3em] uppercase mb-4 opacity-0 animate-[fadeUp_0.8s_ease_0.2s_forwards]">27,000 Square Feet</p>
           <h1 className="text-4xl sm:text-6xl md:text-7xl font-black uppercase leading-none mb-6 opacity-0 animate-[fadeUp_0.8s_ease_0.4s_forwards]">
-            Our <span className="text-[#0096C7]">Amenities</span>
+            Our <span className="text-[#007CAF]">Amenities</span>
           </h1>
-          <p className="text-white/50 text-sm sm:text-base max-w-2xl mx-auto opacity-0 animate-[fadeUp_0.8s_ease_0.6s_forwards]">
+          <p className="text-slate-500 text-sm sm:text-base max-w-2xl mx-auto opacity-0 animate-[fadeUp_0.8s_ease_0.6s_forwards]">
             State-of-the-art equipment, premium facilities, and everything you need for science-backed fitness under one roof.
           </p>
         </div>
       </section>
 
       {/* INTERACTIVE FLOOR PLAN */}
-      <section className="bg-[#0A0A0A] py-16 px-4 border-y border-white/10">
+      <section className="bg-slate-50 py-16 px-4 border-y border-slate-200">
         <div className="max-w-5xl mx-auto">
           <div className="reveal opacity-0 translate-y-8 transition-all duration-700 text-center mb-8">
-            <p className="text-[#0096C7] text-xs font-bold tracking-[0.3em] uppercase mb-3">Building Tour</p>
-            <h2 className="text-2xl sm:text-3xl font-black uppercase">Floor <span className="text-[#0096C7]">Plans</span></h2>
-            <p className="text-white/40 text-xs mt-3 max-w-md mx-auto">Click on a highlighted area to explore that section</p>
+            <p className="text-[#007CAF] text-xs font-bold tracking-[0.3em] uppercase mb-3">Building Tour</p>
+            <h2 className="text-2xl sm:text-3xl font-black uppercase">Floor <span className="text-[#007CAF]">Plans</span></h2>
+            <p className="text-slate-400 text-xs mt-3 max-w-md mx-auto">Click on a highlighted area to explore that section</p>
           </div>
           <div className="flex justify-center gap-3 mb-8">
             {(['1st', '2nd'] as const).map((f) => (
-              <button key={f} onClick={() => setActiveFloor(f)} className={`text-xs font-bold uppercase tracking-widest px-6 py-2 rounded-full border transition-all duration-300 ${activeFloor === f ? 'bg-[#0096C7] border-[#0096C7] text-white' : 'bg-white/5 border-white/10 text-white/50 hover:border-white/30 hover:text-white/80'}`}>
+              <button key={f} onClick={() => setActiveFloor(f)} className={`text-xs font-bold uppercase tracking-widest px-6 py-2 rounded-full border transition-all duration-300 ${activeFloor === f ? 'bg-[#007CAF] border-[#007CAF] text-white' : 'bg-slate-100 border-slate-200 text-white/50 hover:border-white/30 hover:text-white/80'}`}>
                 {f} Floor
               </button>
             ))}
           </div>
           <div className="reveal opacity-0 translate-y-8 transition-all duration-700">
-            <div className="rounded-xl overflow-hidden border border-white/10 bg-black relative group/map">
+            <div className="rounded-xl overflow-hidden border border-slate-200 bg-black relative group/map">
               {/* Floor plan base image */}
               <img
                 src={activeFloor === '1st' ? 'https://arcofitgym.com/wp-content/uploads/2024/03/arco_fit-building_tour_first_floor-rev01.jpg' : 'https://arcofitgym.com/wp-content/uploads/2024/07/arco_fit-building_tour_second_floor-rev01.jpg'}
@@ -314,7 +314,7 @@ export default function AmenitiesPage() {
                         <polygon
                           points={zone.points}
                           fill={isActive ? 'rgba(255,255,255,0.18)' : isHovered ? 'rgba(255,255,255,0.12)' : 'rgba(255,255,255,0)'}
-                          stroke={isActive ? '#0096C7' : isHovered ? 'rgba(0,150,199,0.6)' : 'transparent'}
+                          stroke={isActive ? '#007CAF' : isHovered ? 'rgba(0,150,199,0.6)' : 'transparent'}
                           strokeWidth="0.3"
                           className="transition-all duration-300"
                           onMouseEnter={() => setHoveredZone(zone.id)}
@@ -349,7 +349,7 @@ export default function AmenitiesPage() {
                               cx={zone.labelX}
                               cy={zone.labelY + 4}
                               r="0.8"
-                              fill="#0096C7"
+                              fill="#007CAF"
                               className="animate-ping"
                               opacity="0.6"
                             />
@@ -357,7 +357,7 @@ export default function AmenitiesPage() {
                               cx={zone.labelX}
                               cy={zone.labelY + 4}
                               r="0.5"
-                              fill="#0096C7"
+                              fill="#007CAF"
                             />
                           </>
                         )}
@@ -370,8 +370,8 @@ export default function AmenitiesPage() {
 
               {/* Hover instruction overlay */}
               {!hoveredZone && !activeZone && (
-                <div className="absolute bottom-4 left-1/2 -translate-x-1/2 bg-black/70 backdrop-blur-sm border border-white/10 rounded-full px-4 py-2 flex items-center gap-2 opacity-0 group-hover/map:opacity-100 transition-opacity duration-500 pointer-events-none">
-                  <svg xmlns="http://www.w3.org/2000/svg" className="w-3.5 h-3.5 text-[#0096C7]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                <div className="absolute bottom-4 left-1/2 -translate-x-1/2 bg-black/70 backdrop-blur-sm border border-slate-200 rounded-full px-4 py-2 flex items-center gap-2 opacity-0 group-hover/map:opacity-100 transition-opacity duration-500 pointer-events-none">
+                  <svg xmlns="http://www.w3.org/2000/svg" className="w-3.5 h-3.5 text-[#007CAF]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                     <path strokeLinecap="round" strokeLinejoin="round" d="M15.042 21.672 13.684 16.6m0 0-2.51 2.225.569-9.47 5.227 7.917-3.286-.672ZM12 2.25V4.5m5.834.166-1.591 1.591M20.25 10.5H18M7.757 14.743l-1.59 1.59M6 10.5H3.75m4.007-4.243-1.59-1.591" />
                   </svg>
                   <span className="text-white/60 text-[10px] font-medium tracking-wider uppercase">Click a zone to explore</span>
@@ -389,8 +389,8 @@ export default function AmenitiesPage() {
                   onMouseLeave={() => setHoveredZone(null)}
                   className={`text-[10px] sm:text-xs font-bold uppercase tracking-widest px-4 py-2 rounded-full border transition-all duration-300 ${
                     hoveredZone === zone.id || activeZone === zone.id
-                      ? 'bg-[#0096C7]/20 border-[#0096C7]/50 text-[#0096C7]'
-                      : 'bg-white/5 border-white/10 text-white/50 hover:border-white/20 hover:text-white/70'
+                      ? 'bg-[#007CAF]/20 border-[#007CAF]/50 text-[#007CAF]'
+                      : 'bg-slate-100 border-slate-200 text-white/50 hover:border-white/20 hover:text-white/70'
                   }`}
                 >
                   {zone.label}
@@ -405,8 +405,8 @@ export default function AmenitiesPage() {
       <section className="py-20 px-4">
         <div className="max-w-7xl mx-auto">
           <div className="reveal opacity-0 translate-y-8 transition-all duration-700 text-center mb-14">
-            <p className="text-[#0096C7] text-xs font-bold tracking-[0.3em] uppercase mb-3">Everything You Need</p>
-            <h2 className="text-3xl sm:text-4xl font-black uppercase">Facilities & <span className="text-[#0096C7]">Services</span></h2>
+            <p className="text-[#007CAF] text-xs font-bold tracking-[0.3em] uppercase mb-3">Everything You Need</p>
+            <h2 className="text-3xl sm:text-4xl font-black uppercase">Facilities & <span className="text-[#007CAF]">Services</span></h2>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {amenities.map((a, i) => (
@@ -416,7 +416,7 @@ export default function AmenitiesPage() {
                 className={`reveal opacity-0 translate-y-8 transition-all duration-700 group ${a.id ? 'scroll-mt-24' : ''}`}
                 style={{ transitionDelay: `${(i % 6) * 80}ms` }}
               >
-                <div className="h-full bg-white/[0.03] border border-white/10 rounded-xl overflow-hidden transition-all duration-500 hover:border-[#0096C7]/40 hover:bg-white/[0.06] hover:shadow-[0_0_25px_rgba(0,150,199,0.1)] hover:-translate-y-1">
+                <div className="h-full bg-slate-50 border border-slate-200 rounded-xl overflow-hidden transition-all duration-500 hover:border-[#007CAF]/40  hover:shadow-[0_0_20px_rgba(0,124,175,0.1)] hover:-translate-y-1">
                   {a.image && (
                     <div className="h-48 overflow-hidden">
                       <img 
@@ -429,14 +429,14 @@ export default function AmenitiesPage() {
                   <div className="p-6">
                     <div className="flex items-center gap-3 mb-3">
                       <span className="text-2xl">{a.icon}</span>
-                      <h3 className="font-bold text-sm uppercase tracking-wider group-hover:text-[#0096C7] transition-colors duration-300">{a.title}</h3>
+                      <h3 className="font-bold text-sm uppercase tracking-wider group-hover:text-[#007CAF] transition-colors duration-300">{a.title}</h3>
                     </div>
-                    <p className="text-white/40 text-sm leading-relaxed mb-3">{a.description}</p>
+                    <p className="text-slate-400 text-sm leading-relaxed mb-3">{a.description}</p>
                     {a.details && (
                       <ul className="space-y-1">
                         {a.details.map((d, j) => (
-                          <li key={j} className="text-white/30 text-xs flex items-start gap-2">
-                            <span className="text-[#0096C7] mt-0.5">•</span>
+                          <li key={j} className="text-slate-300 text-xs flex items-start gap-2">
+                            <span className="text-[#007CAF] mt-0.5">•</span>
                             {d}
                           </li>
                         ))}
@@ -451,15 +451,15 @@ export default function AmenitiesPage() {
       </section>
 
       {/* EQUIPMENT BRANDS */}
-      <section className="bg-[#0A0A0A] py-16 px-4 border-y border-white/10">
+      <section className="bg-slate-50 py-16 px-4 border-y border-slate-200">
         <div className="max-w-7xl mx-auto">
           <div className="reveal opacity-0 translate-y-8 transition-all duration-700 text-center mb-10">
-            <p className="text-[#0096C7] text-xs font-bold tracking-[0.3em] uppercase mb-3">Premium Partners</p>
-            <h2 className="text-2xl sm:text-3xl font-black uppercase">Equipment <span className="text-[#0096C7]">Brands</span></h2>
+            <p className="text-[#007CAF] text-xs font-bold tracking-[0.3em] uppercase mb-3">Premium Partners</p>
+            <h2 className="text-2xl sm:text-3xl font-black uppercase">Equipment <span className="text-[#007CAF]">Brands</span></h2>
           </div>
           <div className="flex flex-wrap justify-center gap-4 reveal opacity-0 translate-y-8 transition-all duration-700">
             {['Arsenal Strength','Watson','Prime','Atlantis','Panatta','Sorinex','Rogers','Booty Builder','Matrix'].map((brand, i) => (
-              <div key={i} className="bg-white/[0.05] border border-white/10 rounded-lg px-6 py-3 text-white/60 text-sm font-medium tracking-wider uppercase">
+              <div key={i} className="bg-white/[0.05] border border-slate-200 rounded-lg px-6 py-3 text-slate-500 text-sm font-medium tracking-wider uppercase">
                 {brand}
               </div>
             ))}
@@ -471,8 +471,8 @@ export default function AmenitiesPage() {
       <section className="py-20 px-4">
         <div className="max-w-7xl mx-auto">
           <div className="reveal opacity-0 translate-y-8 transition-all duration-700 text-center mb-14">
-            <p className="text-[#0096C7] text-xs font-bold tracking-[0.3em] uppercase mb-3">See The Space</p>
-            <h2 className="text-3xl sm:text-4xl font-black uppercase">Photo <span className="text-[#0096C7]">Gallery</span></h2>
+            <p className="text-[#007CAF] text-xs font-bold tracking-[0.3em] uppercase mb-3">See The Space</p>
+            <h2 className="text-3xl sm:text-4xl font-black uppercase">Photo <span className="text-[#007CAF]">Gallery</span></h2>
           </div>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
             {galleryImages.map((img, i) => (
@@ -485,7 +485,7 @@ export default function AmenitiesPage() {
       </section>
 
       {/* STATS */}
-      <section className="bg-[#0A0A0A] py-16 px-4 border-y border-white/10">
+      <section className="bg-slate-50 py-16 px-4 border-y border-slate-200">
         <div className="max-w-7xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-8">
           {[
             { number: '27K', label: 'Square Feet' },
@@ -494,8 +494,8 @@ export default function AmenitiesPage() {
             { number: '20+', label: 'Group Classes' },
           ].map((stat, i) => (
             <div key={i} className="reveal opacity-0 translate-y-8 transition-all duration-700 text-center" style={{ transitionDelay: `${i * 100}ms` }}>
-              <div className="text-3xl sm:text-4xl md:text-5xl font-black text-[#0096C7] mb-2">{stat.number}</div>
-              <p className="text-white/40 text-xs sm:text-sm uppercase tracking-widest font-medium">{stat.label}</p>
+              <div className="text-3xl sm:text-4xl md:text-5xl font-black text-[#007CAF] mb-2">{stat.number}</div>
+              <p className="text-slate-400 text-xs sm:text-sm uppercase tracking-widest font-medium">{stat.label}</p>
             </div>
           ))}
         </div>
@@ -504,10 +504,10 @@ export default function AmenitiesPage() {
       {/* CTA */}
       <section className="reveal opacity-0 translate-y-8 transition-all duration-700 py-20 px-4">
         <div className="max-w-3xl mx-auto text-center">
-          <h2 className="text-2xl sm:text-3xl md:text-4xl font-black uppercase mb-4">Experience It <span className="text-[#0096C7]">Yourself</span></h2>
-          <p className="text-white/50 text-sm sm:text-base mb-8 max-w-xl mx-auto">Visit Arco Fit and see our 27,000 sq ft facility in person. Your strongest self starts here.</p>
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-black uppercase mb-4">Experience It <span className="text-[#007CAF]">Yourself</span></h2>
+          <p className="text-slate-500 text-sm sm:text-base mb-8 max-w-xl mx-auto">Visit Arco Fit and see our 27,000 sq ft facility in person. Your strongest self starts here.</p>
           <div className="flex flex-col sm:flex-row justify-center gap-4">
-            <a href="tel:3465532726" className="bg-[#0096C7] hover:bg-[#0077A8] text-white font-bold px-8 py-3 rounded transition-all hover:scale-105 tracking-wider uppercase text-xs">Contact Us</a>
+            <a href="tel:3465532726" className="bg-[#007CAF] hover:brightness-110 text-white font-bold px-8 py-3 rounded transition-all hover:scale-105 tracking-wider uppercase text-xs">Contact Us</a>
             <a href="/" className="border border-white/20 hover:border-white/40 text-white font-bold px-8 py-3 rounded transition-all hover:scale-105 tracking-wider uppercase text-xs">Back to Home</a>
           </div>
         </div>

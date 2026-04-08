@@ -11,7 +11,7 @@ export default function Navbar({ activePage = '' }: NavbarProps) {
 
   const isActive = (page: string) => activePage === page;
   const linkClass = (page: string) =>
-    isActive(page) ? 'text-[#0096C7]' : 'hover:text-[#0096C7] transition-colors';
+    isActive(page) ? 'text-[#007CAF]' : 'hover:text-[#007CAF] transition-colors';
 
   const dropdownItems = [
     { label: 'Group Fitness', href: '/group-fitness' },
@@ -50,7 +50,7 @@ export default function Navbar({ activePage = '' }: NavbarProps) {
                   <a
                     key={item.href}
                     href={item.href}
-                    className={`block px-4 py-2 hover:bg-white/5 transition-colors normal-case tracking-normal text-xs ${isActive(item.href.slice(1)) ? 'text-[#0096C7]' : 'text-white/60 hover:text-[#0096C7]'}`}
+                    className={`block px-4 py-2 hover:bg-white/5 transition-colors normal-case tracking-normal text-xs ${isActive(item.href.slice(1)) ? 'text-[#007CAF]' : 'text-white/60 hover:text-[#007CAF]'}`}
                   >
                     {item.label}
                   </a>
@@ -58,12 +58,12 @@ export default function Navbar({ activePage = '' }: NavbarProps) {
               </div>
             </div>
             <a href="/amenities" className={linkClass('amenities')}>Amenities</a>
-            <a href="https://arcofitgym.clubautomation.com/member-portal/locations/1/memberships" target="_blank" rel="noopener noreferrer" className="hover:text-[#0096C7] transition-colors">Membership</a>
+            <a href="https://arcofitgym.clubautomation.com/member-portal/locations/1/memberships" target="_blank" rel="noopener noreferrer" className="hover:text-[#007CAF] transition-colors">Membership</a>
             <a href="/about-us" className={linkClass('about-us')}>About</a>
             <a href="/events" className={linkClass('events')}>Events</a>
           </div>
           <div className="flex items-center gap-3">
-            <a href="tel:3465532726" className="hidden sm:inline-flex bg-[#0096C7] hover:bg-[#0077A8] text-white text-xs font-bold px-4 py-2 rounded transition-colors tracking-wider">
+            <a href="tel:3465532726" className="hidden sm:inline-flex bg-[#007CAF] hover:bg-[#0077A8] text-white text-xs font-bold px-4 py-2 rounded transition-colors tracking-wider">
               346-553-ARCO
             </a>
             <button
@@ -88,14 +88,14 @@ export default function Navbar({ activePage = '' }: NavbarProps) {
                 key={link.label}
                 href={link.href}
                 onClick={() => setMobileMenuOpen(false)}
-                className={`text-lg font-bold uppercase tracking-wider py-3 border-b border-white/10 transition-colors ${isActive(link.href === '/' ? 'home' : link.href.slice(1)) ? 'text-[#0096C7]' : 'text-white/80 hover:text-[#0096C7]'}`}
+                className={`text-lg font-bold uppercase tracking-wider py-3 border-b border-white/10 transition-colors ${isActive(link.href === '/' ? 'home' : link.href.slice(1)) ? 'text-[#007CAF]' : 'text-white/80 hover:text-[#007CAF]'}`}
               >
                 {link.label}
               </a>
             ))}
           </div>
           <div className="mt-8 flex flex-col gap-3 max-w-md mx-auto">
-            <a href="https://arcofitgym.clubautomation.com/member-portal/locations/1/memberships" target="_blank" rel="noopener noreferrer" className="w-full bg-[#0096C7] hover:bg-[#0077A8] text-white font-bold px-6 py-3 rounded text-center tracking-wider uppercase text-xs transition-colors">
+            <a href="https://arcofitgym.clubautomation.com/member-portal/locations/1/memberships" target="_blank" rel="noopener noreferrer" className="w-full bg-[#007CAF] hover:bg-[#0077A8] text-white font-bold px-6 py-3 rounded text-center tracking-wider uppercase text-xs transition-colors">
               Membership Options
             </a>
             <a href="tel:3465532726" className="w-full border border-white/20 text-white font-bold px-6 py-3 rounded text-center tracking-wider uppercase text-xs">

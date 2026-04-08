@@ -45,7 +45,7 @@ export default function StaffLoginPage() {
                 type="text"
                 required
                 autoComplete="username"
-                className="w-full bg-white text-black px-4 py-3 rounded-sm border border-white/20 focus:outline-none focus:ring-2 focus:ring-[#0096C7] focus:border-[#0096C7] transition-all text-sm"
+                className="w-full bg-white text-black px-4 py-3 rounded-sm border border-white/20 focus:outline-none focus:ring-2 focus:ring-[#007CAF] focus:border-[#007CAF] transition-all text-sm"
               />
             </div>
 
@@ -65,7 +65,7 @@ export default function StaffLoginPage() {
                   type={showPassword ? 'text' : 'password'}
                   required
                   autoComplete="current-password"
-                  className="w-full bg-white text-black px-4 py-3 pr-12 rounded-sm border border-white/20 focus:outline-none focus:ring-2 focus:ring-[#0096C7] focus:border-[#0096C7] transition-all text-sm"
+                  className="w-full bg-white text-black px-4 py-3 pr-12 rounded-sm border border-white/20 focus:outline-none focus:ring-2 focus:ring-[#007CAF] focus:border-[#007CAF] transition-all text-sm"
                 />
                 <button
                   type="button"
@@ -92,12 +92,12 @@ export default function StaffLoginPage() {
               <label className="flex items-center gap-2 cursor-pointer">
                 <input
                   type="checkbox"
-                  className="w-4 h-4 rounded border-white/30 bg-white/10 text-[#0096C7] focus:ring-[#0096C7]"
+                  className="w-4 h-4 rounded border-white/30 bg-white/10 text-[#007CAF] focus:ring-[#007CAF]"
                 />
                 <span className="text-sm text-white/70">Remember Me</span>
               </label>
               <span
-                className="text-sm text-[#0096C7] cursor-default"
+                className="text-sm text-[#007CAF] cursor-default"
                 title="Contact your administrator"
               >
                 Forgot password?
@@ -108,7 +108,7 @@ export default function StaffLoginPage() {
             <button
               type="submit"
               disabled={pending}
-              className="w-full bg-[#0096C7] hover:bg-[#0077A8] disabled:opacity-50 disabled:cursor-not-allowed text-white font-bold py-3 rounded-sm transition-colors duration-200 text-sm uppercase tracking-widest"
+              className="w-full bg-[#007CAF] hover:bg-[#0077A8] disabled:opacity-50 disabled:cursor-not-allowed text-white font-bold py-3 rounded-sm transition-colors duration-200 text-sm uppercase tracking-widest"
             >
               {pending ? 'Logging in...' : 'Login'}
             </button>
@@ -116,7 +116,7 @@ export default function StaffLoginPage() {
             {/* Register Link (decorative) */}
             <p className="text-center text-sm">
               <span
-                className="text-[#0096C7] cursor-default"
+                className="text-[#007CAF] cursor-default"
                 title="Contact your administrator"
               >
                 Not a member yet? Register now.
