@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState, useCallback } from 'react';
 import Footer from '../components/Footer';
 
 interface Amenity {
@@ -10,6 +10,7 @@ interface Amenity {
   image?: string;
   imagePosition?: string;
   details?: string[];
+  id?: string;
 }
 
 const amenities: Amenity[] = [
@@ -18,6 +19,7 @@ const amenities: Amenity[] = [
     description: 'State-of-the-art training facility boasting an unparalleled gym floor stocked with top-tier strength training equipment.',
     icon: '🏋️',
     image: '/photos/gym floor.jpg',
+    id: 'main-workout-area',
   },
   {
     title: 'World Class Equipment',
@@ -40,18 +42,21 @@ const amenities: Amenity[] = [
     icon: '👶',
     image: '/photos/kids club.jpg',
     details: ['Age-specific areas (infants, toddlers, 5 and up)', 'Infant add-on: $40/child', 'Kids Club add-on: $25/child', 'Mon-Fri: 8am-1pm & 4pm-8pm', 'Sat: 8am-2pm | Sun: 11am-3pm'],
+    id: 'kids-club',
   },
   {
     title: 'Locker Rooms',
     description: 'Sleek and contemporary modern spaces to accommodate changing, showering and storing belongings.',
     icon: '🚿',
     image: '/photos/locker rom.jpeg',
+    id: 'locker-rooms',
   },
   {
     title: 'Custom Saunas',
     description: 'Custom separate men\'s and women\'s dry saunas! Oversized to provide plenty of space for all.',
     icon: '🧖',
     image: '/photos/custom saunas.jpg',
+    id: 'saunas',
   },
   {
     title: 'Student Athlete Training',
@@ -65,24 +70,28 @@ const amenities: Amenity[] = [
     description: 'Yoga and Mat Pilates included in membership. Reformer Pilates available in 5:1 group or private 1:1 sessions.',
     icon: '🧘',
     image: '/photos/yoga and pilates.jpeg',
+    id: 'pilates',
   },
   {
     title: 'Group Fitness',
     description: 'Over 20 group fitness classes spanning strength, HIIT, yoga, Pilates, dance, and conditioning.',
     icon: '👥',
     image: '/photos/group fitness.jpeg',
+    id: 'group-exercise',
   },
   {
     title: 'Cardio Section',
     description: 'Cutting-edge technology meets unparalleled comfort. Every workout session is as enjoyable as it is effective.',
     icon: '🏃',
     image: '/photos/cardio section.jpg',
+    id: 'cardio-section',
   },
   {
     title: 'Posing Room',
     description: 'Private posing room with mirrors from all angles and hi-fi Bluetooth speaker system for a personalized experience.',
     icon: '📸',
     image: 'https://arcofitgym.com/wp-content/uploads/2025/04/0Z3A7247a.jpg',
+    id: 'posing-room',
   },
 ];
 
@@ -97,9 +106,105 @@ const galleryImages = [
   { src: 'https://arcofitgym.com/wp-content/uploads/2025/04/0Z3A7213a-800x800.jpg', alt: 'Kids Club interior' },
 ];
 
+/* ────────────────────────────────────────────────────
+   Interactive Map Zone Definitions
+   Coordinates are percentages of the image dimensions
+   ──────────────────────────────────────────────────── */
+interface MapZone {
+  id: string;
+  label: string;
+  /** SVG polygon points as "x1,y1 x2,y2 ..." in % of viewBox */
+  points: string;
+  /** Center position for label (percentage) */
+  labelX: number;
+  labelY: number;
+  /** Scroll target element ID */
+  targetId: string;
+}
+
+const mapZones1st: MapZone[] = [
+  {
+    id: 'zone-workout',
+    label: 'Main Workout Area',
+    // L-shaped: large gym floor left, narrows at bottom-right
+    points: '1,7 54,7 54,55 48,55 48,96 1,96',
+    labelX: 27,
+    labelY: 48,
+    targetId: 'main-workout-area',
+  },
+  {
+    id: 'zone-lockers',
+    label: 'Locker Rooms',
+    // Women's + Men's locker rooms upper right
+    points: '60,5 91,5 91,49 60,49',
+    labelX: 75.5,
+    labelY: 27,
+    targetId: 'locker-rooms',
+  },
+  {
+    id: 'zone-kids',
+    label: "Kid's Club",
+    // Lower right incl. infant/toddler areas - L-shape
+    points: '56,52 91,52 91,96 56,96',
+    labelX: 73,
+    labelY: 74,
+    targetId: 'kids-club',
+  },
+  {
+    id: 'zone-saunas',
+    label: 'Saunas',
+    // Small rooms far upper right
+    points: '92,5 98,5 98,23 92,23',
+    labelX: 95,
+    labelY: 14,
+    targetId: 'saunas',
+  },
+];
+
+const mapZones2nd: MapZone[] = [
+  {
+    id: 'zone-group-exercise',
+    label: 'Group Exercise',
+    // Upper-right enclosed room
+    points: '63,4 96,4 96,33 63,33',
+    labelX: 79.5,
+    labelY: 18,
+    targetId: 'group-exercise',
+  },
+  {
+    id: 'zone-cardio',
+    label: 'Cardio Section',
+    // Equipment rows, center-bottom
+    points: '54,41 81,41 81,96 54,96',
+    labelX: 67.5,
+    labelY: 68,
+    targetId: 'cardio-section',
+  },
+  {
+    id: 'zone-posing',
+    label: 'Posing Room',
+    // Small room right side, between group exercise and pilates
+    points: '83,34 97,34 97,57 83,57',
+    labelX: 90,
+    labelY: 45,
+    targetId: 'posing-room',
+  },
+  {
+    id: 'zone-pilates',
+    label: 'Pilates',
+    // Lower-right corner room
+    points: '83,60 97,60 97,96 83,96',
+    labelX: 90,
+    labelY: 78,
+    targetId: 'pilates',
+  },
+];
+
 export default function AmenitiesPage() {
   const observerRef = useRef<IntersectionObserver | null>(null);
   const [activeFloor, setActiveFloor] = useState<'1st' | '2nd'>('1st');
+  const [hoveredZone, setHoveredZone] = useState<string | null>(null);
+  const [activeZone, setActiveZone] = useState<string | null>(null);
 
   useEffect(() => {
     observerRef.current = new IntersectionObserver(
@@ -108,6 +213,21 @@ export default function AmenitiesPage() {
     );
     document.querySelectorAll('.reveal').forEach((el) => observerRef.current?.observe(el));
     return () => observerRef.current?.disconnect();
+  }, []);
+
+  const handleZoneClick = useCallback((targetId: string, zoneId: string) => {
+    setActiveZone(zoneId);
+    const el = document.getElementById(targetId);
+    if (el) {
+      const navHeight = 64;
+      const elementPosition = el.getBoundingClientRect().top + window.scrollY;
+      window.scrollTo({
+        top: elementPosition - navHeight - 24,
+        behavior: 'smooth',
+      });
+    }
+    // Clear active state after scroll animation
+    setTimeout(() => setActiveZone(null), 1500);
   }, []);
 
   return (
@@ -150,12 +270,13 @@ export default function AmenitiesPage() {
         </div>
       </section>
 
-      {/* FLOOR PLANS */}
+      {/* INTERACTIVE FLOOR PLAN */}
       <section className="bg-[#0A0A0A] py-16 px-4 border-y border-white/10">
         <div className="max-w-5xl mx-auto">
           <div className="reveal opacity-0 translate-y-8 transition-all duration-700 text-center mb-8">
             <p className="text-[#0096C7] text-xs font-bold tracking-[0.3em] uppercase mb-3">Building Tour</p>
             <h2 className="text-2xl sm:text-3xl font-black uppercase">Floor <span className="text-[#0096C7]">Plans</span></h2>
+            <p className="text-white/40 text-xs mt-3 max-w-md mx-auto">Click on a highlighted area to explore that section</p>
           </div>
           <div className="flex justify-center gap-3 mb-8">
             {(['1st', '2nd'] as const).map((f) => (
@@ -165,12 +286,116 @@ export default function AmenitiesPage() {
             ))}
           </div>
           <div className="reveal opacity-0 translate-y-8 transition-all duration-700">
-            <div className="rounded-xl overflow-hidden border border-white/10 bg-white">
+            <div className="rounded-xl overflow-hidden border border-white/10 bg-black relative group/map">
+              {/* Floor plan base image */}
               <img
                 src={activeFloor === '1st' ? 'https://arcofitgym.com/wp-content/uploads/2024/03/arco_fit-building_tour_first_floor-rev01.jpg' : 'https://arcofitgym.com/wp-content/uploads/2024/07/arco_fit-building_tour_second_floor-rev01.jpg'}
                 alt={`${activeFloor} Floor Plan`}
-                className="w-full h-auto"
+                className="w-full h-auto block"
+                draggable={false}
               />
+
+              {/* Interactive SVG overlay */}
+              {(() => {
+                const zones = activeFloor === '1st' ? mapZones1st : mapZones2nd;
+                return (
+                <svg
+                  className="absolute inset-0 w-full h-full"
+                  viewBox="0 0 100 100"
+                  preserveAspectRatio="none"
+                  style={{ pointerEvents: 'none' }}
+                >
+                  {zones.map((zone) => {
+                    const isHovered = hoveredZone === zone.id;
+                    const isActive = activeZone === zone.id;
+                    return (
+                      <g key={zone.id} style={{ pointerEvents: 'auto', cursor: 'pointer' }}>
+                        {/* Clickable zone polygon */}
+                        <polygon
+                          points={zone.points}
+                          fill={isActive ? 'rgba(255,255,255,0.18)' : isHovered ? 'rgba(255,255,255,0.12)' : 'rgba(255,255,255,0)'}
+                          stroke={isActive ? '#0096C7' : isHovered ? 'rgba(0,150,199,0.6)' : 'transparent'}
+                          strokeWidth="0.3"
+                          className="transition-all duration-300"
+                          onMouseEnter={() => setHoveredZone(zone.id)}
+                          onMouseLeave={() => setHoveredZone(null)}
+                          onClick={() => handleZoneClick(zone.targetId, zone.id)}
+                        />
+                        {/* Label */}
+                        <text
+                          x={zone.labelX}
+                          y={zone.labelY}
+                          textAnchor="middle"
+                          dominantBaseline="middle"
+                          fill={isActive || isHovered ? '#ffffff' : 'rgba(255,255,255,0.7)'}
+                          fontSize="2"
+                          fontWeight="700"
+                          fontFamily="system-ui, -apple-system, sans-serif"
+                          letterSpacing="0.1"
+                          className="transition-all duration-300 pointer-events-none select-none uppercase"
+                          style={{
+                            textShadow: '0 0 8px rgba(0,0,0,0.9), 0 0 16px rgba(0,0,0,0.7)',
+                            paintOrder: 'stroke',
+                            stroke: 'rgba(0,0,0,0.5)',
+                            strokeWidth: '0.3px',
+                          }}
+                        >
+                          {zone.label}
+                        </text>
+                        {/* Pulsing dot indicator */}
+                        {(isHovered || isActive) && (
+                          <>
+                            <circle
+                              cx={zone.labelX}
+                              cy={zone.labelY + 4}
+                              r="0.8"
+                              fill="#0096C7"
+                              className="animate-ping"
+                              opacity="0.6"
+                            />
+                            <circle
+                              cx={zone.labelX}
+                              cy={zone.labelY + 4}
+                              r="0.5"
+                              fill="#0096C7"
+                            />
+                          </>
+                        )}
+                      </g>
+                    );
+                  })}
+                </svg>
+                );
+              })()}
+
+              {/* Hover instruction overlay */}
+              {!hoveredZone && !activeZone && (
+                <div className="absolute bottom-4 left-1/2 -translate-x-1/2 bg-black/70 backdrop-blur-sm border border-white/10 rounded-full px-4 py-2 flex items-center gap-2 opacity-0 group-hover/map:opacity-100 transition-opacity duration-500 pointer-events-none">
+                  <svg xmlns="http://www.w3.org/2000/svg" className="w-3.5 h-3.5 text-[#0096C7]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M15.042 21.672 13.684 16.6m0 0-2.51 2.225.569-9.47 5.227 7.917-3.286-.672ZM12 2.25V4.5m5.834.166-1.591 1.591M20.25 10.5H18M7.757 14.743l-1.59 1.59M6 10.5H3.75m4.007-4.243-1.59-1.591" />
+                  </svg>
+                  <span className="text-white/60 text-[10px] font-medium tracking-wider uppercase">Click a zone to explore</span>
+                </div>
+              )}
+            </div>
+
+            {/* Zone legend */}
+            <div className="flex flex-wrap justify-center gap-3 mt-6">
+              {(activeFloor === '1st' ? mapZones1st : mapZones2nd).map((zone) => (
+                <button
+                  key={zone.id}
+                  onClick={() => handleZoneClick(zone.targetId, zone.id)}
+                  onMouseEnter={() => setHoveredZone(zone.id)}
+                  onMouseLeave={() => setHoveredZone(null)}
+                  className={`text-[10px] sm:text-xs font-bold uppercase tracking-widest px-4 py-2 rounded-full border transition-all duration-300 ${
+                    hoveredZone === zone.id || activeZone === zone.id
+                      ? 'bg-[#0096C7]/20 border-[#0096C7]/50 text-[#0096C7]'
+                      : 'bg-white/5 border-white/10 text-white/50 hover:border-white/20 hover:text-white/70'
+                  }`}
+                >
+                  {zone.label}
+                </button>
+              ))}
             </div>
           </div>
         </div>
@@ -185,7 +410,12 @@ export default function AmenitiesPage() {
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {amenities.map((a, i) => (
-              <div key={i} className="reveal opacity-0 translate-y-8 transition-all duration-700 group" style={{ transitionDelay: `${(i % 6) * 80}ms` }}>
+              <div
+                key={i}
+                id={a.id}
+                className={`reveal opacity-0 translate-y-8 transition-all duration-700 group ${a.id ? 'scroll-mt-24' : ''}`}
+                style={{ transitionDelay: `${(i % 6) * 80}ms` }}
+              >
                 <div className="h-full bg-white/[0.03] border border-white/10 rounded-xl overflow-hidden transition-all duration-500 hover:border-[#0096C7]/40 hover:bg-white/[0.06] hover:shadow-[0_0_25px_rgba(0,150,199,0.1)] hover:-translate-y-1">
                   {a.image && (
                     <div className="h-48 overflow-hidden">
