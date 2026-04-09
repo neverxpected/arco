@@ -449,21 +449,38 @@ export default function AmenitiesPage() {
       </section>
 
       {/* GALLERY */}
-      <section className="py-20 px-4">
-        <div className="max-w-7xl mx-auto">
-          <div className="reveal opacity-0 translate-y-8 transition-all duration-700 text-center mb-14">
+      <section className="py-20 overflow-hidden">
+        <div className="max-w-7xl mx-auto px-4">
+          <div className="reveal opacity-0 translate-y-8 transition-all duration-700 text-center mb-8">
             <p className="text-[#007CAF] text-xs font-bold tracking-[0.3em] uppercase mb-3">See The Space</p>
             <h2 className="text-3xl sm:text-4xl font-black uppercase">Photo <span className="text-[#007CAF]">Gallery</span></h2>
           </div>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
-            {galleryImages.map((img, i) => (
-              <div 
-                key={i} 
-                className="reveal opacity-0 translate-y-8 transition-all duration-700 group overflow-hidden rounded-lg cursor-zoom-in" 
-                style={{ transitionDelay: `${(i % 8) * 60}ms` }}
-                onClick={() => setActiveImage(img.src)}
-              >
-                <img src={img.src} alt={img.alt} className="w-full h-48 object-cover transition-transform duration-500 group-hover:scale-110" />
+        </div>
+
+        {/* INFINITE PHOTO SCROLLER */}
+        <div className="relative w-full mx-auto overflow-hidden reveal opacity-0 translate-y-8 transition-all duration-700">
+          {/* Fade out on the left, fade in on the right */}
+          <div className="absolute inset-y-0 left-0 w-16 sm:w-32 bg-gradient-to-r from-white to-transparent z-10 pointer-events-none"></div>
+          <div className="absolute inset-y-0 right-0 w-16 sm:w-32 bg-gradient-to-l from-white to-transparent z-10 pointer-events-none"></div>
+
+          <div className="flex w-[max-content] animate-marquee gap-3 sm:gap-4 px-2 hover:[animation-play-state:paused] items-center">
+            {/* Render identical groups side by side for a seamless infinite loop */}
+            {[...Array(3)].map((_, i) => (
+              <div key={i} className="flex gap-3 sm:gap-4">
+                {galleryImages.map((img, j) => (
+                  <div 
+                    key={j} 
+                    className="relative w-48 sm:w-64 md:w-80 h-32 sm:h-40 md:h-56 shrink-0 group rounded-lg overflow-hidden cursor-zoom-in border border-slate-200 hover:border-[#007CAF]/50 hover:shadow-lg transition-all duration-500 hover:-translate-y-1"
+                    onClick={() => setActiveImage(img.src)}
+                  >
+                    <img 
+                      src={img.src} 
+                      alt={img.alt} 
+                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" 
+                      loading="lazy"
+                    />
+                  </div>
+                ))}
               </div>
             ))}
           </div>

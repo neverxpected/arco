@@ -1,8 +1,43 @@
 'use client';
 
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
+
+const parseEventEndDate = (dateStr: string, timeStr: string): Date => {
+  const currentYear = new Date().getFullYear();
+  // Match any month and day combos
+  const monthRegex = /(January|February|March|April|May|June|July|August|September|October|November|December)\s+(\d{1,2})/gi;
+  let lastMatch = null;
+  let match;
+  while ((match = monthRegex.exec(dateStr)) !== null) {
+     lastMatch = match;
+  }
+  if (!lastMatch) return new Date(currentYear + 1, 0, 1);
+  const monthStr = lastMatch[1].toLowerCase();
+  const dayStr = lastMatch[2];
+
+  // Match times e.g. "7:30 AM" or "1:00 PM – 2:00 PM"
+  const timeRegex = /(\d{1,2}):(\d{2})\s+(AM|PM)/gi;
+  let lastTimeMatch = null;
+  let timeMatch;
+  while ((timeMatch = timeRegex.exec(timeStr)) !== null) {
+     lastTimeMatch = timeMatch;
+  }
+  let hours = 23;
+  let minutes = 59;
+  if (lastTimeMatch) {
+    hours = parseInt(lastTimeMatch[1], 10);
+    minutes = parseInt(lastTimeMatch[2], 10);
+    const ampm = lastTimeMatch[3].toUpperCase();
+    if (ampm === 'PM' && hours < 12) hours += 12;
+    if (ampm === 'AM' && hours === 12) hours = 0;
+  }
+
+  const monthNames = ["january", "february", "march", "april", "may", "june", "july", "august", "september", "october", "november", "december"];
+  const monthIndex = monthNames.indexOf(monthStr);
+  return new Date(currentYear, monthIndex, parseInt(dayStr, 10), hours, minutes);
+};
 
 const events = [
   {
@@ -112,8 +147,37 @@ const categoryColors: Record<string, string> = {
 
 export default function EventsPage() {
   const observerRef = useRef<IntersectionObserver | null>(null);
+  const [activeEvents, setActiveEvents] = useState(events);
+  const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
+    // 1. Filter out old events dynamically using strict Houston (America/Chicago) Time
+    const houstonTimeFormatter = new Intl.DateTimeFormat('en-US', {
+      timeZone: 'America/Chicago',
+      year: 'numeric', month: 'numeric', day: 'numeric',
+      hour: 'numeric', minute: 'numeric', second: 'numeric',
+      hour12: false
+    });
+    
+    // Parse the current Houston time string back into a naive date object for 1-to-1 comparison
+    const [datePart, timePart] = houstonTimeFormatter.format(new Date()).split(', ');
+    const [month, day, year] = datePart.split('/');
+    const [hour, minute, second] = timePart.split(':');
+    
+    const houstonNow = new Date(
+      parseInt(year), parseInt(month) - 1, parseInt(day),
+      parseInt(hour), parseInt(minute), parseInt(second)
+    );
+
+    const filtered = events.filter(e => parseEventEndDate(e.date, e.time) > houstonNow);
+    setActiveEvents(filtered);
+    setMounted(true);
+  }, []);
+
+  useEffect(() => {
+    if (!mounted) return;
+    
+    // 2. Attach observer to new DOM elements
     observerRef.current = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
@@ -124,11 +188,19 @@ export default function EventsPage() {
       },
       { threshold: 0.1 }
     );
-    document.querySelectorAll('.reveal').forEach((el) => {
-      observerRef.current?.observe(el);
-    });
+
+    const checkElements = () => {
+      const elements = document.querySelectorAll('.reveal');
+      if (elements.length > 0) {
+        elements.forEach((el) => observerRef.current?.observe(el));
+      }
+    };
+    
+    // Give react a tick to flush DOM changes
+    setTimeout(checkElements, 50);
+
     return () => observerRef.current?.disconnect();
-  }, []);
+  }, [mounted, activeEvents.length]);
 
   return (
     <main className="bg-white text-slate-900">
@@ -153,15 +225,16 @@ export default function EventsPage() {
       </section>
 
       {/* EVENTS GRID */}
-      <section className="pb-20 px-4">
-        <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {events.map((event, i) => (
-            <div
-              key={i}
-              className="reveal opacity-0 translate-y-8 transition-all duration-700 group"
-              style={{ transitionDelay: `${(i % 6) * 80}ms` }}
-            >
-              <div className="h-full border border-gray-200 rounded-xl overflow-hidden flex flex-col transition-all duration-500 hover:border-[#007CAF]/60 hover:shadow-[0_0_20px_rgba(0,124,175,0.1)] hover:-translate-y-1">
+      <section className="pb-20 px-4 min-h-[500px]">
+        {activeEvents.length > 0 ? (
+          <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {activeEvents.map((event, i) => (
+              <div
+                key={i}
+                className="reveal opacity-0 translate-y-8 transition-all duration-700 group"
+                style={{ transitionDelay: `${(i % 6) * 80}ms` }}
+              >
+                <div className="h-full border border-gray-200 rounded-xl overflow-hidden flex flex-col transition-all duration-500 hover:border-[#007CAF]/60 hover:shadow-[0_0_20px_rgba(0,124,175,0.1)] hover:-translate-y-1">
                 {/* Dark Top */}
                 <div className="bg-[#111111] p-6 pb-5">
                   {/* Category & Price */}
@@ -203,6 +276,19 @@ export default function EventsPage() {
             </div>
           ))}
         </div>
+        ) : mounted ? (
+          <div className="max-w-3xl mx-auto text-center py-20 reveal opacity-0 translate-y-8 transition-all duration-700">
+            <div className="bg-slate-50 border border-slate-200 rounded-2xl p-12 shadow-sm">
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-16 w-16 mx-auto text-slate-300 mb-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1}>
+                <path strokeLinecap="round" strokeLinejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 0 1 2.25-2.25h13.5A2.25 2.25 0 0 1 21 7.5v11.25m-18 0A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75m-18 0v-7.5A2.25 2.25 0 0 1 5.25 9h13.5A2.25 2.25 0 0 1 21 11.25v7.5" />
+              </svg>
+              <h3 className="text-2xl font-black text-slate-900 mb-2 uppercase">No Upcoming Events</h3>
+              <p className="text-slate-500 font-medium max-w-md mx-auto">
+                We don&apos;t have any events scheduled at the moment! Check back later or follow our social channels for announcements.
+              </p>
+            </div>
+          </div>
+        ) : null}
       </section>
 
       {/* CTA */}
