@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useRef, useState, useCallback } from 'react';
+import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 
 interface Amenity {
@@ -232,29 +233,7 @@ export default function AmenitiesPage() {
 
   return (
     <main className="bg-white text-slate-900">
-      {/* NAV */}
-      <nav className="fixed top-0 w-full z-50 bg-black/80 backdrop-blur-md border-b border-white/10">
-        <div className="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
-          <a href="/" className="text-xl font-black tracking-tight"><span className="text-white">ARCO</span><span className="text-[#007CAF]">FIT</span></a>
-          <div className="hidden md:flex items-center gap-6 text-xs font-medium tracking-widest uppercase text-white/70">
-            <a href="/" className="hover:text-[#007CAF] transition-colors">Home</a>
-            <div className="relative group">
-              <a href="/group-fitness" className="hover:text-[#007CAF] transition-colors flex items-center gap-1">Group Fitness<svg xmlns="http://www.w3.org/2000/svg" className="w-3 h-3 transition-transform group-hover:rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" /></svg></a>
-              <div className="absolute top-full left-0 mt-2 w-48 bg-black/95 backdrop-blur-md border border-slate-200 rounded-lg py-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 translate-y-1 group-hover:translate-y-0">
-                <a href="/group-fitness" className="block px-4 py-2 text-white/60 hover:text-[#007CAF] hover:bg-slate-100 transition-colors normal-case tracking-normal text-xs">Group Fitness</a>
-                <a href="/reformer-pilates" className="block px-4 py-2 text-white/60 hover:text-[#007CAF] hover:bg-slate-100 transition-colors normal-case tracking-normal text-xs">Reformer Pilates</a>
-                <a href="/yoga-teacher-training" className="block px-4 py-2 text-white/60 hover:text-[#007CAF] hover:bg-slate-100 transition-colors normal-case tracking-normal text-xs">Yoga Teacher Training</a>
-                <a href="/schedule" className="block px-4 py-2 text-white/60 hover:text-[#007CAF] hover:bg-slate-100 transition-colors normal-case tracking-normal text-xs">Schedule</a>
-              </div>
-            </div>
-            <a href="/amenities" className="text-[#007CAF]">Amenities</a>
-            <a href="https://arcofitgym.clubautomation.com/member-portal/locations/1/memberships" target="_blank" rel="noopener noreferrer" className="hover:text-[#007CAF] transition-colors">Membership</a>
-            <a href="/about-us" className="hover:text-[#007CAF] transition-colors">About</a>
-            <a href="/events" className="hover:text-[#007CAF] transition-colors">Events</a>
-          </div>
-          <a href="tel:3465532726" className="bg-[#007CAF] hover:brightness-110 text-white text-xs font-bold px-4 py-2 rounded transition-colors tracking-wider">346-553-ARCO</a>
-        </div>
-      </nav>
+      <Navbar activePage="amenities" />
 
       {/* HERO */}
       <section className="relative pt-32 pb-20 px-4 overflow-hidden">

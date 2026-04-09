@@ -1,11 +1,50 @@
 'use client';
 
 import { useEffect, useRef } from 'react';
+import { motion, Variants } from 'framer-motion';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 
+/* ─── Animation Variants (strictly typed for Next.js prod builds) ─── */
+
+const fadeUp: Variants = {
+  hidden: { opacity: 0, y: 40 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.7, ease: [0.21, 0.47, 0.32, 0.98] },
+  },
+};
+
+const staggerContainer: Variants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: { staggerChildren: 0.15 },
+  },
+};
+
+const cardItem: Variants = {
+  hidden: { opacity: 0, y: 30 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.6, ease: 'easeOut' as const },
+  },
+};
+
+/* ─── Hero text cascade — each child gets a progressively longer delay ─── */
+
+const heroChild = (delay: number): Variants => ({
+  hidden: { opacity: 0, y: 40 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.8, ease: [0.21, 0.47, 0.32, 0.98], delay },
+  },
+});
+
 export default function Home() {
-  const observerRef = useRef<IntersectionObserver | null>(null);
   const heroVideoRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
@@ -47,23 +86,6 @@ export default function Home() {
     };
   }, []);
 
-  useEffect(() => {
-    observerRef.current = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('animate-in');
-          }
-        });
-      },
-      { threshold: 0.15 }
-    );
-    document.querySelectorAll('.reveal').forEach((el) => {
-      observerRef.current?.observe(el);
-    });
-    return () => observerRef.current?.disconnect();
-  }, []);
-
   return (
     <main className="bg-white text-slate-900">
 
@@ -73,31 +95,79 @@ export default function Home() {
       <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
         <div ref={heroVideoRef} className="absolute inset-0" />
         <div className="absolute inset-0 bg-black/40" />
-        <div className="relative z-10 text-center px-2 sm:px-4 w-full max-w-4xl mx-auto pt-20">
-          <p className="text-[#007CAF] text-xs font-bold tracking-[0.3em] uppercase mb-1 opacity-0 animate-[fadeUp_0.8s_ease_0.2s_forwards]">
+
+        {/* Ambient breathing glow */}
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] md:w-[600px] md:h-[600px] bg-[#007CAF] rounded-full mix-blend-multiply filter blur-[120px] opacity-15 animate-pulse pointer-events-none" />
+
+        <motion.div
+          className="relative z-10 text-center px-4 sm:px-6 w-full max-w-4xl mx-auto pt-24 pb-8"
+          initial="hidden"
+          animate="visible"
+          variants={staggerContainer}
+        >
+          <motion.p
+            variants={heroChild(0.2)}
+            className="text-[#007CAF] text-xs font-bold tracking-[0.3em] uppercase mb-1"
+          >
             Fulshear, Texas
-          </p>
-          <h1 className="text-white text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-black uppercase leading-none mb-6 opacity-0 animate-[fadeUp_0.8s_ease_0.4s_forwards]">
+          </motion.p>
+
+          <motion.h1
+            variants={heroChild(0.4)}
+            className="text-white text-4xl md:text-6xl lg:text-7xl font-black uppercase leading-none mb-6"
+          >
             What&apos;s<br />
             <span className="text-[#007CAF]">Your Goal?</span>
-          </h1>
-          <p className="text-white/70 text-[13px] min-[400px]:text-sm sm:text-base md:text-lg max-w-[95%] sm:max-w-xl mx-auto mb-8 opacity-0 animate-[fadeUp_0.8s_ease_0.6s_forwards]">
+          </motion.h1>
+
+          <motion.p
+            variants={heroChild(0.6)}
+            className="text-white/70 text-[13px] min-[400px]:text-sm sm:text-base md:text-lg max-w-[95%] sm:max-w-xl mx-auto mb-8"
+          >
             Science-based wellness, an inspiring community, and the highest-quality equipment at our 27,000 square-foot facility.
-          </p>
-          <div className="flex flex-col sm:flex-row flex-wrap justify-center items-center gap-3 opacity-0 animate-[fadeUp_0.8s_ease_0.8s_forwards]">
+          </motion.p>
+
+          <motion.div
+            variants={heroChild(0.8)}
+            className="flex flex-col sm:flex-row flex-wrap justify-center items-center gap-3"
+          >
             <a href="https://arcofitgym.clubautomation.com/member-portal/locations/1/memberships" target="_blank" rel="noopener noreferrer" className="bg-[#007CAF] hover:brightness-110 text-white font-bold px-6 py-3 rounded transition-all hover:scale-105 tracking-wider uppercase text-xs">
               Membership Options
             </a>
             <a href="https://arcofitgym.vfpnext.com/embed/engage/form/11?Account=21585041&ClubID=1" target="_blank" rel="noopener noreferrer" className="border border-white/40 text-white/80 hover:border-white hover:text-white font-bold px-6 py-3 rounded transition-all hover:scale-105 tracking-wider uppercase text-xs">
               1-Day Pass
             </a>
-          </div>
-        </div>
+          </motion.div>
+        </motion.div>
+      </section>
+
+      {/* INFINITE TYPOGRAPHY MARQUEE */}
+      <section className="bg-white py-6 md:py-8 overflow-hidden border-b border-slate-100">
+        <motion.div
+          className="flex whitespace-nowrap"
+          animate={{ x: ['0%', '-50%'] }}
+          transition={{ repeat: Infinity, ease: 'linear', duration: 20 }}
+        >
+          {[...Array(2)].map((_, i) => (
+            <span
+              key={i}
+              className="text-5xl md:text-8xl font-black uppercase text-transparent [-webkit-text-stroke:2px_#cbd5e1] select-none px-4"
+            >
+              STRENGTH &bull; RECOVERY &bull; COMMUNITY &bull; SCIENCE &bull; REFORMER PILATES &bull; YOGA &bull;&nbsp;
+            </span>
+          ))}
+        </motion.div>
       </section>
 
       {/* PILLARS */}
-      <section className="bg-white py-14">
-        <div className="max-w-7xl mx-auto px-4 grid grid-cols-1 sm:grid-cols-3 gap-8">
+      <section className="bg-white py-10 md:py-14">
+        <motion.div
+          className="max-w-7xl mx-auto px-4 grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8"
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: '-100px' }}
+        >
           {[
             {
               label: 'Community',
@@ -127,17 +197,27 @@ export default function Home() {
               ),
             },
           ].map((item, i) => (
-            <div key={i} className="reveal opacity-0 translate-y-8 transition-all duration-700 text-center bg-slate-50 rounded-2xl p-8 border border-slate-200" style={{ transitionDelay: `${i * 150}ms` }}>
+            <motion.div
+              key={i}
+              variants={cardItem}
+              className="text-center bg-slate-50 rounded-2xl p-6 md:p-8 border border-slate-200"
+            >
               {item.icon}
               <h3 className="text-base font-black uppercase tracking-widest mb-2 text-slate-900">{item.label}</h3>
               <p className="text-slate-500 text-sm leading-relaxed">{item.desc}</p>
-            </div>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
       </section>
 
       {/* CTA BANNER */}
-      <section className="reveal opacity-0 translate-y-8 transition-all duration-700 bg-slate-950 py-16 text-center overflow-hidden">
+      <motion.section
+        variants={fadeUp}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, margin: '-100px' }}
+        className="bg-slate-950 py-10 md:py-16 text-center overflow-hidden"
+      >
         <div className="px-4">
           <h2 className="text-xl sm:text-2xl md:text-3xl font-black uppercase tracking-tight mb-3 text-white">
             Have Questions?<br className="block sm:hidden" /> We'd Love to Answer Them
@@ -156,18 +236,18 @@ export default function Home() {
           <div className="absolute inset-y-0 left-0 w-20 sm:w-40 bg-gradient-to-r from-slate-950 to-transparent z-10 pointer-events-none"></div>
           <div className="absolute inset-y-0 right-0 w-20 sm:w-40 bg-gradient-to-l from-slate-950 to-transparent z-10 pointer-events-none"></div>
 
-          <div className="flex w-[max-content] animate-marquee gap-6 px-2 py-8 hover:[animation-play-state:paused] items-center">
+          <div className="flex w-[max-content] animate-marquee gap-4 md:gap-6 px-2 py-6 md:py-8 hover:[animation-play-state:paused] items-center">
             {/* Render two identical groups side by side for a seamless infinite loop */}
             {[...Array(2)].map((_, i) => (
-              <div key={i} className="flex gap-6">
+              <div key={i} className="flex gap-4 md:gap-6">
                 {[
                   'acrofit sign.jpg', 'cardio section.jpg', 'custom saunas.jpg', 'group fitness.jpeg', 'gym 1.jpg', 'gym 2.jpg', 'gym 3.jpg', 'gym 4.jpg', 'gym floor.jpg', 'locker rom.jpeg', 'revitalize.jpg', 'world class equipment.jpg', 'yoga and pilates.jpeg'
                 ].map((img, j) => (
-                  <div key={j} className="relative w-64 sm:w-80 h-40 sm:h-56 shrink-0 group rounded-xl border border-white/10 transition-all duration-500 hover:border-[#007CAF] hover:shadow-[0_0_30px_rgba(0,124,175,0.4)] hover:-translate-y-2 hover:scale-[1.03] cursor-pointer overflow-hidden">
+                  <div key={j} className="relative w-52 sm:w-64 md:w-80 h-36 sm:h-40 md:h-56 shrink-0 group rounded-xl border border-white/10 transition-all duration-500 md:hover:border-[#007CAF] md:hover:shadow-[0_0_30px_rgba(0,124,175,0.4)] md:hover:-translate-y-2 cursor-pointer overflow-hidden">
                     <img
                       src={`/photos/${encodeURIComponent(img)}`}
                       alt="Gym Facility"
-                      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                      className="w-full h-full object-cover transition-transform duration-500 ease-[cubic-bezier(0.25,0.1,0.25,1)] group-hover:scale-110"
                       loading="lazy"
                     />
                   </div>
@@ -176,14 +256,20 @@ export default function Home() {
             ))}
           </div>
         </div>
-      </section>
+      </motion.section>
 
       {/* SCIENCE SECTION — "The Arco Fit Way" */}
-      <section className="bg-slate-50 py-20 px-4">
-        <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-          <div className="reveal opacity-0 translate-y-8 transition-all duration-700 text-center md:text-left">
+      <section className="bg-slate-50 py-12 md:py-20 px-4">
+        <motion.div
+          className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-center"
+          variants={fadeUp}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: '-100px' }}
+        >
+          <div className="text-center md:text-left">
             <p className="text-[#007CAF] text-xs font-bold tracking-[0.3em] uppercase mb-4">The Arco Fit Way</p>
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-black uppercase leading-tight mb-6 text-slate-900">
+            <h2 className="text-3xl md:text-5xl font-black uppercase leading-tight mb-6 text-slate-900">
               A Science-Based<br />Approach to<br />
               <span className="text-[#007CAF]">Wellness</span>
             </h2>
@@ -194,7 +280,7 @@ export default function Home() {
               Membership Options
             </a>
           </div>
-          <div className="reveal opacity-0 translate-y-8 transition-all duration-700">
+          <div>
             <div className="aspect-video bg-slate-100 rounded-xl border border-slate-200 overflow-hidden shadow-sm">
               <iframe
                 className="w-full h-full rounded-xl"
@@ -204,47 +290,70 @@ export default function Home() {
               />
             </div>
           </div>
-        </div>
+        </motion.div>
       </section>
 
       {/* LEADERSHIP */}
-      <section className="bg-white py-20 px-4">
+      <section className="bg-white py-12 md:py-20 px-4">
         <div className="max-w-7xl mx-auto">
-          <div className="reveal opacity-0 translate-y-8 transition-all duration-700 text-center mb-12">
+          <motion.div
+            variants={fadeUp}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: '-100px' }}
+            className="text-center mb-8 md:mb-12"
+          >
             <p className="text-[#007CAF] text-xs font-bold tracking-[0.3em] uppercase mb-3">Founded on Experience</p>
-            <h2 className="text-3xl sm:text-4xl font-black uppercase text-slate-900">Leadership Team</h2>
-          </div>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+            <h2 className="text-2xl md:text-4xl font-black uppercase text-slate-900">Leadership Team</h2>
+          </motion.div>
+
+          <motion.div
+            className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6"
+            variants={staggerContainer}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: '-100px' }}
+          >
             {[
               { name: 'Jeremy Koger', title: 'Founder', image: 'https://arcofitgym.com/wp-content/uploads/2025/02/Jeremy-Koger.jpg' },
               { name: 'Matt Caldwell', title: 'Founder', image: 'https://arcofitgym.com/wp-content/uploads/2025/02/Matt-Caldwell.jpg' },
               { name: 'Jason McCourt', title: 'Founder', image: 'https://arcofitgym.com/wp-content/uploads/2025/02/Jason-McCourt.jpg' },
               { name: 'Alli Vasquez', title: 'General Manager', image: 'https://arcofitgym.com/wp-content/uploads/2025/02/Alli-Vasquez.jpg' },
             ].map((person, i) => (
-              <div key={i} className="reveal opacity-0 translate-y-8 transition-all duration-500 text-center group cursor-pointer" style={{ transitionDelay: `${i * 100}ms` }}>
-                <div className="w-full aspect-square bg-slate-100 rounded-xl border border-slate-200 mb-4 overflow-hidden transition-all duration-500 group-hover:border-[#007CAF] group-hover:shadow-[0_0_30px_rgba(0,124,175,0.3)] group-hover:-translate-y-2 group-hover:scale-[1.03]">
+              <motion.div
+                key={i}
+                variants={cardItem}
+                className="text-center group cursor-pointer"
+              >
+                <div className="w-full aspect-square bg-slate-100 rounded-xl border border-slate-200 mb-3 md:mb-4 overflow-hidden transition-all duration-500 md:group-hover:border-[#007CAF] md:group-hover:shadow-[0_0_30px_rgba(0,124,175,0.3)] md:group-hover:-translate-y-2">
                   <img src={person.image} alt={person.name} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
                 </div>
                 <h3 className="font-bold text-xs sm:text-sm uppercase tracking-wider text-slate-900 transition-colors duration-300 group-hover:text-[#007CAF]">{person.name}</h3>
                 <p className="text-slate-400 text-xs mt-1 transition-colors duration-300 group-hover:text-slate-600">{person.title}</p>
-              </div>
+              </motion.div>
             ))}
-          </div>
+          </motion.div>
         </div>
       </section>
 
       {/* LOCATION */}
-      <section className="bg-slate-50 border-t border-slate-200 py-20 px-4">
-        <div className="max-w-7xl mx-auto flex flex-col items-center">
-          <div className="reveal opacity-0 translate-y-8 transition-all duration-700 text-center mb-10">
+      <section className="bg-slate-50 border-t border-slate-200 py-12 md:py-20 px-4">
+        <motion.div
+          className="max-w-7xl mx-auto flex flex-col items-center"
+          variants={fadeUp}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: '-100px' }}
+        >
+          <div className="text-center mb-10">
             <p className="text-[#007CAF] text-xs font-bold tracking-[0.3em] uppercase mb-3">Visit Us</p>
-            <h2 className="text-3xl sm:text-4xl font-black uppercase mb-4 text-slate-900">Our Location</h2>
+            <h2 className="text-2xl md:text-4xl font-black uppercase mb-4 text-slate-900">Our Location</h2>
             <p className="text-slate-500 text-sm">
               6527 Skyline Dr. Building C<br />
               Fulshear, TX 77441
             </p>
           </div>
-          <div className="reveal opacity-0 translate-y-8 transition-all duration-700 w-full max-w-5xl h-[400px] sm:h-[500px] rounded-2xl overflow-hidden border border-slate-200 bg-white p-2 shadow-sm">
+          <div className="w-full max-w-5xl h-[280px] sm:h-[400px] md:h-[500px] rounded-2xl overflow-hidden border border-slate-200 bg-white p-1.5 sm:p-2 shadow-sm">
             <iframe
               src="https://maps.google.com/maps?q=6527%20Skyline%20Dr.%20Building%20C%20Fulshear,%20TX%2077441&t=&z=14&ie=UTF8&iwloc=&output=embed"
               width="100%"
@@ -255,7 +364,7 @@ export default function Home() {
               referrerPolicy="no-referrer-when-downgrade"
             ></iframe>
           </div>
-        </div>
+        </motion.div>
       </section>
 
       <Footer />
