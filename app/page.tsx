@@ -268,7 +268,7 @@ export default function Home() {
       </motion.section>
 
       {/* SCIENCE SECTION — "The Arco Fit Way" */}
-      <section className="bg-slate-50 py-12 md:py-20 px-4">
+      <section className="bg-slate-950 py-12 md:py-20 px-4">
         <motion.div
           className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-center"
           variants={fadeUp}
@@ -278,11 +278,14 @@ export default function Home() {
         >
           <div className="text-center md:text-left">
             <p className="text-[#007CAF] text-xs font-bold tracking-[0.3em] uppercase mb-4">The Arco Fit Way</p>
-            <h2 className="text-3xl md:text-5xl font-black uppercase leading-tight mb-6 text-slate-900">
+            <h2 className="text-3xl md:text-5xl font-black uppercase leading-tight mb-6 text-white">
               A Science-Based<br />Approach to<br />
               <span className="text-[#007CAF]">Wellness</span>
             </h2>
-            <ScrollRevealText text="We strive to provide a learning environment run by experienced and successful coaches. Our most important goal is to create a welcoming atmosphere and community in which everyone feels a sense of belonging." />
+            <ScrollRevealText 
+              text="We strive to provide a learning environment run by experienced and successful coaches. Our most important goal is to create a welcoming atmosphere and community in which everyone feels a sense of belonging." 
+              className="text-white/80"
+            />
             <a href="https://arcofitgym.clubautomation.com/member-portal/locations/1/memberships" target="_blank" rel="noopener noreferrer" className="bg-[#007CAF] hover:brightness-110 text-white font-bold px-8 py-3 rounded transition-all hover:scale-105 tracking-wider uppercase text-xs inline-block">
               Membership Options
             </a>
@@ -354,9 +357,9 @@ export default function Home() {
               Fulshear, TX 77441
             </p>
           </div>
-          <a 
-            href="https://maps.google.com/maps?q=6527%20Skyline%20Dr.%20Building%20C%20Fulshear,%20TX%2077441" 
-            target="_blank" 
+          <a
+            href="https://maps.google.com/maps?q=6527%20Skyline%20Dr.%20Building%20C%20Fulshear,%20TX%2077441"
+            target="_blank"
             rel="noopener noreferrer"
             className="block w-full max-w-5xl rounded-2xl overflow-hidden border border-slate-200 bg-white p-1.5 sm:p-2 shadow-sm hover:shadow-md transition-all group"
           >
@@ -420,7 +423,7 @@ const Word = ({ children, progress, range }: { children: string, progress: any, 
   return <motion.span style={{ opacity }} className="inline-block mr-[0.25em]">{children}</motion.span>;
 };
 
-const ScrollRevealText = ({ text }: { text: string }) => {
+const ScrollRevealText = ({ text, className = "text-slate-600" }: { text: string, className?: string }) => {
   const containerRef = useRef<HTMLParagraphElement>(null);
   const { scrollYProgress } = useScroll({
     target: containerRef,
@@ -430,7 +433,7 @@ const ScrollRevealText = ({ text }: { text: string }) => {
   const words = text.split(" ");
 
   return (
-    <p ref={containerRef} className="text-slate-600 leading-relaxed mb-8 text-sm sm:text-base md:text-lg font-medium flex flex-wrap">
+    <p ref={containerRef} className={`${className} leading-relaxed mb-8 text-sm sm:text-base md:text-lg font-medium flex flex-wrap`}>
       {words.map((word, i) => {
         const start = i / words.length;
         const end = start + (1 / words.length);
