@@ -1,7 +1,7 @@
 'use client';
 
-import { useEffect, useRef } from 'react';
-import { motion, Variants } from 'framer-motion';
+import { useEffect, useRef, useState } from 'react';
+import { motion, Variants, AnimatePresence } from 'framer-motion';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 
@@ -53,6 +53,7 @@ const heroFadeUp: Variants = {
 };
 
 export default function Home() {
+  const [activeImage, setActiveImage] = useState<string | null>(null);
   const heroVideoRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
@@ -228,10 +229,10 @@ export default function Home() {
       >
         <div className="px-4">
           <h2 className="text-xl sm:text-2xl md:text-3xl font-black uppercase tracking-tight mb-3 text-white">
-            Have Questions?<br className="block sm:hidden" /> We'd Love to Answer Them
+            STOP IN FOR AN ARCO FIT TOUR!
           </h2>
           <p className="text-[#007CAF] font-bold text-sm sm:text-base tracking-wider uppercase mb-8">
-            Give You a Tour of Arco Fit! Please Stop In!
+            GOT QUESTIONS? WE GOT ANSWERS!
           </p>
           <a href="/contact" className="inline-block bg-[#007CAF] hover:brightness-110 text-white font-bold px-8 py-4 rounded-lg transition-all hover:-translate-y-1 tracking-wider uppercase text-sm mb-16 relative z-10">
             Schedule A Tour
@@ -251,7 +252,7 @@ export default function Home() {
                 {[
                   'acrofit sign.jpg', 'cardio section.jpg', 'custom saunas.jpg', 'group fitness.jpeg', 'gym 1.jpg', 'gym 2.jpg', 'gym 3.jpg', 'gym 4.jpg', 'gym floor.jpg', 'locker rom.jpeg', 'revitalize.jpg', 'world class equipment.jpg', 'yoga and pilates.jpeg'
                 ].map((img, j) => (
-                  <div key={j} className="relative w-52 sm:w-64 md:w-80 h-36 sm:h-40 md:h-56 shrink-0 group rounded-xl border border-white/10 transition-all duration-500 md:hover:border-[#007CAF] md:hover:shadow-[0_0_30px_rgba(0,124,175,0.4)] md:hover:-translate-y-2 cursor-pointer overflow-hidden">
+                  <div key={j} onClick={() => setActiveImage(img)} className="relative w-52 sm:w-64 md:w-80 h-36 sm:h-40 md:h-56 shrink-0 group rounded-xl border border-white/10 transition-all duration-500 md:hover:border-[#007CAF] md:hover:shadow-[0_0_30px_rgba(0,124,175,0.4)] md:hover:-translate-y-2 cursor-pointer overflow-hidden">
                     <img
                       src={`/photos/${encodeURIComponent(img)}`}
                       alt="Gym Facility"
@@ -380,6 +381,38 @@ export default function Home() {
       </section>
 
       <Footer />
+
+      <AnimatePresence>
+        {activeImage && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onClick={() => setActiveImage(null)}
+            className="fixed inset-0 z-[100] flex items-center justify-center bg-slate-950/90 backdrop-blur-sm p-4 sm:p-8 cursor-zoom-out"
+          >
+            <motion.img
+              initial={{ scale: 0.9, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.9, opacity: 0 }}
+              transition={{ type: 'spring', damping: 25, stiffness: 300 }}
+              src={`/photos/${encodeURIComponent(activeImage)}`}
+              alt="Gym Facility Enlarged"
+              className="max-w-full max-h-full rounded-2xl shadow-2xl object-contain border border-white/10"
+              onClick={(e) => e.stopPropagation()}
+            />
+            
+            <button
+              onClick={() => setActiveImage(null)}
+              className="absolute top-4 right-4 sm:top-6 sm:right-6 text-white/50 hover:text-white transition-colors bg-black/50 hover:bg-black/80 rounded-full p-2"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-6 h-6 sm:w-8 sm:h-8">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            </button>
+          </motion.div>
+        )}
+      </AnimatePresence>
 
     </main>
   );
