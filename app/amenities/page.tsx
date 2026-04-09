@@ -487,7 +487,7 @@ export default function AmenitiesPage() {
           <p className="text-slate-500 text-sm sm:text-base mb-8 max-w-xl mx-auto">Visit Arco Fit and see our 27,000 sq ft facility in person. Your strongest self starts here.</p>
           <div className="flex flex-col sm:flex-row justify-center gap-4">
             <a href="tel:3465532726" className="bg-[#007CAF] hover:brightness-110 text-white font-bold px-8 py-3 rounded transition-all hover:scale-105 tracking-wider uppercase text-xs">Contact Us</a>
-            <a href="/" className="border border-white/20 hover:border-white/40 text-white font-bold px-8 py-3 rounded transition-all hover:scale-105 tracking-wider uppercase text-xs">Back to Home</a>
+            <a href="/" className="border-2 border-[#007CAF] bg-transparent hover:bg-[#007CAF]/10 text-[#007CAF] font-bold px-8 py-3 rounded transition-all hover:scale-105 tracking-wider uppercase text-xs">Back to Home</a>
           </div>
         </div>
       </section>

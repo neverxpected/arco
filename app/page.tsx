@@ -354,17 +354,26 @@ export default function Home() {
               Fulshear, TX 77441
             </p>
           </div>
-          <div className="w-full max-w-5xl h-[280px] sm:h-[400px] md:h-[500px] rounded-2xl overflow-hidden border border-slate-200 bg-white p-1.5 sm:p-2 shadow-sm">
-            <iframe
-              src="https://maps.google.com/maps?q=6527%20Skyline%20Dr.%20Building%20C%20Fulshear,%20TX%2077441&t=&z=14&ie=UTF8&iwloc=&output=embed"
-              width="100%"
-              height="100%"
-              className="rounded-xl"
-              allowFullScreen={false}
-              loading="lazy"
-              referrerPolicy="no-referrer-when-downgrade"
-            ></iframe>
-          </div>
+          <a 
+            href="https://maps.google.com/maps?q=6527%20Skyline%20Dr.%20Building%20C%20Fulshear,%20TX%2077441" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            className="block w-full max-w-5xl rounded-2xl overflow-hidden border border-slate-200 bg-white p-1.5 sm:p-2 shadow-sm hover:shadow-md transition-all group"
+          >
+            <div className="relative w-full h-[280px] sm:h-[400px] md:h-[500px] rounded-xl overflow-hidden">
+              <div className="absolute inset-0 bg-[#007CAF]/10 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center z-10">
+                <span className="bg-[#007CAF] text-white font-bold px-6 py-3 rounded shadow-lg transform translate-y-4 group-hover:translate-y-0 transition-all duration-300 uppercase tracking-widest text-xs">
+                  Open in Maps
+                </span>
+              </div>
+              <img
+                src="/photos/fulshear-map.png"
+                alt="Map of Arco Fit at 6527 Skyline Dr"
+                className="w-full h-full object-cover"
+                loading="lazy"
+              />
+            </div>
+          </a>
         </motion.div>
       </section>
 
@@ -389,7 +398,7 @@ export default function Home() {
               className="max-w-full max-h-full rounded-2xl shadow-2xl object-contain border border-white/10"
               onClick={(e) => e.stopPropagation()}
             />
-            
+
             <button
               onClick={() => setActiveImage(null)}
               className="absolute top-4 right-4 sm:top-6 sm:right-6 text-white/50 hover:text-white transition-colors bg-black/50 hover:bg-black/80 rounded-full p-2"
@@ -438,12 +447,12 @@ const ProfileCard = ({ person }: { person: { name: string, title: string, image:
       className="text-center group cursor-pointer"
     >
       <div className="w-full aspect-square bg-slate-100 rounded-xl border border-slate-200 mb-3 md:mb-4 overflow-hidden transition-all duration-500 md:group-hover:border-[#007CAF] md:group-hover:shadow-[0_0_30px_rgba(0,124,175,0.3)] md:group-hover:-translate-y-2">
-        <motion.img 
-          src={person.image} 
-          alt={person.name} 
+        <motion.img
+          src={person.image}
+          alt={person.name}
           className="w-full h-full object-cover origin-center"
           whileHover={{ scale: 1.05 }}
-          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }} 
+          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
         />
       </div>
       <h3 className="font-bold text-xs sm:text-sm uppercase tracking-wider text-slate-900 transition-colors duration-300 md:group-hover:text-[#007CAF]">{person.name}</h3>

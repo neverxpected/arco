@@ -193,7 +193,7 @@ export default function YogaTeacherTrainingPage() {
           <p className="text-slate-500 text-sm sm:text-base mb-8 max-w-xl mx-auto">Step onto the mat. Step into your calling. For questions, reach out at Samantha.Walker@arcofitgym.com</p>
           <div className="flex flex-col sm:flex-row justify-center gap-4">
             <a href="https://arcofitgym.clubautomation.com/calendar/event-info?id=10661" target="_blank" rel="noopener noreferrer" className="bg-[#007CAF] hover:brightness-110 text-white font-bold px-8 py-3 rounded transition-all hover:scale-105 tracking-wider uppercase text-xs">Register Now</a>
-            <a href="/group-fitness" className="border border-white/20 hover:border-white/40 text-white font-bold px-8 py-3 rounded transition-all hover:scale-105 tracking-wider uppercase text-xs">All Group Fitness</a>
+            <a href="/group-fitness" className="border-2 border-[#007CAF] bg-transparent hover:bg-[#007CAF]/10 text-[#007CAF] font-bold px-8 py-3 rounded transition-all hover:scale-105 tracking-wider uppercase text-xs">All Group Fitness</a>
           </div>
         </div>
       </section>

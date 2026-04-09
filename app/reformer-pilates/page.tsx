@@ -243,7 +243,7 @@ export default function ReformerPilatesPage() {
             >
               Book a Class
             </a>
-            <a href="/group-fitness" className="border border-white/20 hover:border-white/40 text-white font-bold px-8 py-3 rounded transition-all hover:scale-105 tracking-wider uppercase text-xs">
+            <a href="/group-fitness" className="border-2 border-[#007CAF] bg-transparent hover:bg-[#007CAF]/10 text-[#007CAF] font-bold px-8 py-3 rounded transition-all hover:scale-105 tracking-wider uppercase text-xs">
               All Group Fitness
             </a>
           </div>

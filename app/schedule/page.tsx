@@ -75,7 +75,7 @@ export default function SchedulePage() {
           <p className="text-slate-500 text-sm sm:text-base mb-8 max-w-lg mx-auto">Not sure which class is right for you? Check out our full class descriptions or contact us.</p>
           <div className="flex flex-col sm:flex-row justify-center gap-4">
             <a href="/group-fitness" className="bg-[#007CAF] hover:brightness-110 text-white font-bold px-8 py-3 rounded transition-all hover:scale-105 tracking-wider uppercase text-xs">View Classes</a>
-            <a href="tel:3465532726" className="border border-white/20 hover:border-white/40 text-white font-bold px-8 py-3 rounded transition-all hover:scale-105 tracking-wider uppercase text-xs">Call Us</a>
+            <a href="tel:3465532726" className="border-2 border-[#007CAF] bg-transparent hover:bg-[#007CAF]/10 text-[#007CAF] font-bold px-8 py-3 rounded transition-all hover:scale-105 tracking-wider uppercase text-xs">Call Us</a>
           </div>
         </div>
       </section>
