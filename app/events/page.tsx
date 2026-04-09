@@ -41,6 +41,14 @@ const parseEventEndDate = (dateStr: string, timeStr: string): Date => {
 
 const events = [
   {
+    title: "TEST: Auto-Disappearing Event",
+    date: 'Thursday, April 9',
+    time: '2:00 PM – 2:30 PM',
+    description: 'This is a live structural test. If you are reading this before 2:30 PM CST, it means the script is properly retaining valid upcoming events! Test it by waiting or manually changing your local machine clock past 2:30 PM.',
+    category: 'Workshop',
+    price: 'Testing Event',
+  },
+  {
     title: "Dick's Sporting Goods + Arco Fit Xtreme 45 Workout",
     date: 'Sunday, February 8',
     time: '7:30 AM',
