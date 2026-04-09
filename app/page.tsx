@@ -116,17 +116,17 @@ export default function Home() {
         >
           <motion.p
             variants={heroFadeUp}
-            className="text-[#007CAF] text-xs font-bold tracking-[0.3em] uppercase mb-1"
+            className="text-white text-xs font-bold tracking-[0.3em] uppercase mb-1"
           >
             Fulshear, Texas
           </motion.p>
 
           <motion.h1
             variants={heroFadeUp}
-            className="text-white text-4xl md:text-6xl lg:text-7xl font-black uppercase leading-none mb-6"
+            className="text-[#007CAF] text-4xl md:text-6xl lg:text-7xl font-black uppercase leading-none mb-6"
           >
             What&apos;s<br />
-            <span className="text-[#007CAF]">Your Goal?</span>
+            <span className="text-white">Your Goal?</span>
           </motion.h1>
 
           <motion.p
@@ -331,17 +331,7 @@ export default function Home() {
               { name: 'Jason McCourt', title: 'Founder', image: 'https://arcofitgym.com/wp-content/uploads/2025/02/Jason-McCourt.jpg' },
               { name: 'Alli Vasquez', title: 'General Manager', image: 'https://arcofitgym.com/wp-content/uploads/2025/02/Alli-Vasquez.jpg' },
             ].map((person, i) => (
-              <motion.div
-                key={i}
-                variants={cardItem}
-                className="text-center group cursor-pointer"
-              >
-                <div className="w-full aspect-square bg-slate-100 rounded-xl border border-slate-200 mb-3 md:mb-4 overflow-hidden transition-all duration-500 md:group-hover:border-[#007CAF] md:group-hover:shadow-[0_0_30px_rgba(0,124,175,0.3)] md:group-hover:-translate-y-2">
-                  <img src={person.image} alt={person.name} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
-                </div>
-                <h3 className="font-bold text-xs sm:text-sm uppercase tracking-wider text-slate-900 transition-colors duration-300 group-hover:text-[#007CAF]">{person.name}</h3>
-                <p className="text-slate-400 text-xs mt-1 transition-colors duration-300 group-hover:text-slate-600">{person.title}</p>
-              </motion.div>
+              <ProfileCard key={i} person={person} />
             ))}
           </motion.div>
         </div>
@@ -438,5 +428,26 @@ const ScrollRevealText = ({ text }: { text: string }) => {
         return <Word key={i} progress={scrollYProgress} range={[start, end]}>{word}</Word>;
       })}
     </p>
+  );
+};
+
+const ProfileCard = ({ person }: { person: { name: string, title: string, image: string } }) => {
+  return (
+    <motion.div
+      variants={cardItem}
+      className="text-center group cursor-pointer"
+    >
+      <div className="w-full aspect-square bg-slate-100 rounded-xl border border-slate-200 mb-3 md:mb-4 overflow-hidden transition-all duration-500 md:group-hover:border-[#007CAF] md:group-hover:shadow-[0_0_30px_rgba(0,124,175,0.3)] md:group-hover:-translate-y-2">
+        <motion.img 
+          src={person.image} 
+          alt={person.name} 
+          className="w-full h-full object-cover origin-center"
+          whileHover={{ scale: 1.05 }}
+          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }} 
+        />
+      </div>
+      <h3 className="font-bold text-xs sm:text-sm uppercase tracking-wider text-slate-900 transition-colors duration-300 md:group-hover:text-[#007CAF]">{person.name}</h3>
+      <p className="text-slate-400 text-xs mt-1 transition-colors duration-300 md:group-hover:text-slate-600">{person.title}</p>
+    </motion.div>
   );
 };
