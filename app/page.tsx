@@ -56,7 +56,7 @@ export default function Home() {
     // to the actual DOM node. iOS Safari requires muted + playsinline
     // to be present in the DOM for autoplay to work.
     const video = document.createElement('video');
-    video.src = '/videos/arco-hero-vid3.mp4';
+    video.src = '/videos/Commercial Reel.mp4';
     video.autoplay = true;
     video.loop = true;
     video.muted = true;
@@ -282,11 +282,15 @@ export default function Home() {
           </div>
           <div>
             <div className="aspect-video bg-slate-100 rounded-xl border border-slate-200 overflow-hidden shadow-sm">
-              <iframe
-                className="w-full h-full rounded-xl"
-                src="https://www.youtube.com/embed/lMdZ21jYQpU"
-                title="Arco Fit"
-                allowFullScreen
+              <video
+                className="w-full h-full rounded-xl object-cover"
+                src="/videos/arco-drone.mp4"
+                autoPlay
+                loop
+                muted
+                playsInline
+                preload="auto"
+                title="Arco Fit Drone Flyover"
               />
             </div>
           </div>
