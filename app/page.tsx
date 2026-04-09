@@ -293,12 +293,13 @@ export default function Home() {
           <div>
             <div className="aspect-video bg-slate-100 rounded-xl border border-slate-200 overflow-hidden shadow-sm">
               <video
+                autoPlay={true}
+                loop={true}
+                muted={true}
+                defaultMuted={true}
+                playsInline={true}
                 className="w-full h-full rounded-xl object-cover"
                 src="/videos/arco-drone.mp4"
-                autoPlay
-                loop
-                muted
-                playsInline
                 preload="auto"
                 title="Arco Fit Drone Flyover"
               />
