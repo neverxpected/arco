@@ -259,7 +259,7 @@ export default function AmenitiesPage() {
           </div>
           <div className="flex justify-center gap-3 mb-8">
             {(['1st', '2nd'] as const).map((f) => (
-              <button key={f} onClick={() => setActiveFloor(f)} className={`text-xs font-bold uppercase tracking-widest px-6 py-2 rounded-full border transition-all duration-300 ${activeFloor === f ? 'bg-[#007CAF] border-[#007CAF] text-white' : 'bg-slate-100 border-slate-200 text-white/50 hover:border-white/30 hover:text-white/80'}`}>
+              <button key={f} onClick={() => setActiveFloor(f)} className={`text-xs font-bold uppercase tracking-widest px-6 py-2 rounded-full border transition-all duration-300 ${activeFloor === f ? 'bg-[#007CAF] border-[#007CAF] text-white' : 'bg-white border-slate-200 text-slate-500 hover:border-[#007CAF]/50 hover:text-[#007CAF]'}`}>
                 {f} Floor
               </button>
             ))}
@@ -368,8 +368,8 @@ export default function AmenitiesPage() {
                   onMouseLeave={() => setHoveredZone(null)}
                   className={`text-[10px] sm:text-xs font-bold uppercase tracking-widest px-4 py-2 rounded-full border transition-all duration-300 ${
                     hoveredZone === zone.id || activeZone === zone.id
-                      ? 'bg-[#007CAF]/20 border-[#007CAF]/50 text-[#007CAF]'
-                      : 'bg-slate-100 border-slate-200 text-white/50 hover:border-white/20 hover:text-white/70'
+                      ? 'bg-[#007CAF]/10 border-[#007CAF]/30 text-[#007CAF]'
+                      : 'bg-white border-slate-200 text-slate-500 hover:border-[#007CAF]/50 hover:text-[#007CAF]'
                   }`}
                 >
                   {zone.label}

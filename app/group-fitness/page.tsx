@@ -196,8 +196,7 @@ export default function GroupFitnessPage() {
             Movement by Design
           </p>
           <h1 className="text-4xl sm:text-6xl md:text-7xl font-black uppercase leading-none mb-6 opacity-0 animate-[fadeUp_0.8s_ease_0.4s_forwards]">
-            Group<br />
-            <span className="text-[#007CAF]">Fitness</span>
+            Group <span className="text-[#007CAF]">Fitness</span>
           </h1>
           <p className="text-slate-500 text-sm sm:text-base max-w-2xl mx-auto mb-8 opacity-0 animate-[fadeUp_0.8s_ease_0.6s_forwards]">
             Every movement serves a purpose, every class is built with intention, and every progression is designed to strengthen you from the inside out.
