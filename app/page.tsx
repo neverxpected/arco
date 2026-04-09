@@ -20,12 +20,12 @@ const staggerContainer: Variants = {
   hidden: { opacity: 0 },
   visible: {
     opacity: 1,
-    transition: { staggerChildren: 0.15 },
+    transition: { staggerChildren: 0.2 },
   },
 };
 
 const cardItem: Variants = {
-  hidden: { opacity: 0, y: 30 },
+  hidden: { opacity: 0, y: 50 },
   visible: {
     opacity: 1,
     y: 0,
@@ -33,16 +33,24 @@ const cardItem: Variants = {
   },
 };
 
-/* ─── Hero text cascade — each child gets a progressively longer delay ─── */
+/* ─── Hero text cascade — using container stagger ─── */
 
-const heroChild = (delay: number): Variants => ({
-  hidden: { opacity: 0, y: 40 },
+const heroStaggerContainer: Variants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: { staggerChildren: 0.2 },
+  },
+};
+
+const heroFadeUp: Variants = {
+  hidden: { opacity: 0, y: 30 },
   visible: {
     opacity: 1,
     y: 0,
-    transition: { duration: 0.8, ease: [0.21, 0.47, 0.32, 0.98], delay },
+    transition: { duration: 0.8, ease: [0.21, 0.47, 0.32, 0.98] },
   },
-});
+};
 
 export default function Home() {
   const heroVideoRef = useRef<HTMLDivElement | null>(null);
@@ -72,7 +80,7 @@ export default function Home() {
 
     // Try to play immediately and on data-ready events
     const tryPlay = () => {
-      video.play().catch(() => {});
+      video.play().catch(() => { });
     };
     tryPlay();
     video.addEventListener('loadedmetadata', tryPlay, { once: true });
@@ -103,17 +111,17 @@ export default function Home() {
           className="relative z-10 text-center px-4 sm:px-6 w-full max-w-4xl mx-auto pt-24 pb-8"
           initial="hidden"
           animate="visible"
-          variants={staggerContainer}
+          variants={heroStaggerContainer}
         >
           <motion.p
-            variants={heroChild(0.2)}
+            variants={heroFadeUp}
             className="text-[#007CAF] text-xs font-bold tracking-[0.3em] uppercase mb-1"
           >
             Fulshear, Texas
           </motion.p>
 
           <motion.h1
-            variants={heroChild(0.4)}
+            variants={heroFadeUp}
             className="text-white text-4xl md:text-6xl lg:text-7xl font-black uppercase leading-none mb-6"
           >
             What&apos;s<br />
@@ -121,14 +129,14 @@ export default function Home() {
           </motion.h1>
 
           <motion.p
-            variants={heroChild(0.6)}
+            variants={heroFadeUp}
             className="text-white/70 text-[13px] min-[400px]:text-sm sm:text-base md:text-lg max-w-[95%] sm:max-w-xl mx-auto mb-8"
           >
             Science-based wellness, an inspiring community, and the highest-quality equipment at our 27,000 square-foot facility.
           </motion.p>
 
           <motion.div
-            variants={heroChild(0.8)}
+            variants={heroFadeUp}
             className="flex flex-col sm:flex-row flex-wrap justify-center items-center gap-3"
           >
             <a href="https://arcofitgym.clubautomation.com/member-portal/locations/1/memberships" target="_blank" rel="noopener noreferrer" className="bg-[#007CAF] hover:brightness-110 text-white font-bold px-6 py-3 rounded transition-all hover:scale-105 tracking-wider uppercase text-xs">
@@ -166,14 +174,14 @@ export default function Home() {
           variants={staggerContainer}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true, margin: '-100px' }}
+          viewport={{ once: true, amount: 0.2 }}
         >
           {[
             {
               label: 'Community',
               desc: 'Working to achieve your goals together.',
               icon: (
-                <svg xmlns="http://www.w3.org/2000/svg" className="w-12 h-12 mx-auto mb-4 text-[#007CAF]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+                <svg xmlns="http://www.w3.org/2000/svg" className="w-12 h-12 mx-auto mb-4 text-[#007CAF] transition-transform duration-300 group-hover:scale-110" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
                   <path strokeLinecap="round" strokeLinejoin="round" d="M18 18.72a9.094 9.094 0 0 0 3.741-.479 3 3 0 0 0-4.682-2.72m.94 3.198.001.031c0 .225-.012.447-.037.666A11.944 11.944 0 0 1 12 21c-2.17 0-4.207-.576-5.963-1.584A6.062 6.062 0 0 1 6 18.719m12 0a5.971 5.971 0 0 0-.941-3.197m0 0A5.995 5.995 0 0 0 12 12.75a5.995 5.995 0 0 0-5.058 2.772m0 0a3 3 0 0 0-4.681 2.72 8.986 8.986 0 0 0 3.74.477m.94-3.197a5.971 5.971 0 0 0-.94 3.197M15 6.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Zm6 3a2.25 2.25 0 1 1-4.5 0 2.25 2.25 0 0 1 4.5 0Zm-13.5 0a2.25 2.25 0 1 1-4.5 0 2.25 2.25 0 0 1 4.5 0Z" />
                 </svg>
               ),
@@ -182,7 +190,7 @@ export default function Home() {
               label: 'Science',
               desc: 'A safer, more effective path to wellness.',
               icon: (
-                <svg xmlns="http://www.w3.org/2000/svg" className="w-12 h-12 mx-auto mb-4 text-[#007CAF]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+                <svg xmlns="http://www.w3.org/2000/svg" className="w-12 h-12 mx-auto mb-4 text-[#007CAF] transition-transform duration-300 group-hover:scale-110" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
                   <path strokeLinecap="round" strokeLinejoin="round" d="M9.75 3.104v5.714a2.25 2.25 0 0 1-.659 1.591L5 14.5M9.75 3.104c-.251.023-.501.05-.75.082m.75-.082a24.301 24.301 0 0 1 4.5 0m0 0v5.714a2.25 2.25 0 0 0 .659 1.591L19 14.5M14.25 3.104c.251.023.501.05.75.082M5 14.5l-.938 2.813c-.293.879.3 1.687 1.188 1.687h13.5c.888 0 1.48-.808 1.188-1.687L19 14.5m-14 0h14" />
                 </svg>
               ),
@@ -191,8 +199,8 @@ export default function Home() {
               label: 'Results',
               desc: 'The best equipment for optimal results.',
               icon: (
-                <svg xmlns="http://www.w3.org/2000/svg" className="w-12 h-12 mx-auto mb-4 text-[#007CAF]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M16.5 18.75h-9m9 0a3 3 0 0 1 3 3h-15a3 3 0 0 1 3-3m9 0v-4.5A3.375 3.375 0 0 0 13.125 10.875h-.375m3.75 7.875v-4.5a3.375 3.375 0 0 0-3.375-3.375h-.375m0 0V6.219c0-.297.118-.583.33-.793l2.83-2.83a.374.374 0 0 0-.528-.528L12 4.875l-2.757-2.807a.374.374 0 0 0-.528.528l2.83 2.83c.211.21.33.496.33.793V10.5m0 0h-.375A3.375 3.375 0 0 0 7.5 13.875v4.875" />
+                <svg xmlns="http://www.w3.org/2000/svg" className="w-12 h-12 mx-auto mb-4 text-[#007CAF] transition-transform duration-300 group-hover:scale-110" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z" />
                 </svg>
               ),
             },
@@ -200,7 +208,7 @@ export default function Home() {
             <motion.div
               key={i}
               variants={cardItem}
-              className="text-center bg-slate-50 rounded-2xl p-6 md:p-8 border border-slate-200"
+              className="text-center bg-slate-50 rounded-2xl p-6 md:p-8 border border-slate-200 group cursor-pointer transition-all duration-300 hover:-translate-y-2 hover:border-[#007CAF]/50 hover:shadow-[0_8px_30px_rgba(0,124,175,0.12)]"
             >
               {item.icon}
               <h3 className="text-base font-black uppercase tracking-widest mb-2 text-slate-900">{item.label}</h3>
