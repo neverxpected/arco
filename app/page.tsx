@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useRef, useState } from 'react';
-import { motion, Variants, AnimatePresence } from 'framer-motion';
+import { motion, Variants, AnimatePresence, useScroll, useTransform } from 'framer-motion';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 
@@ -282,9 +282,7 @@ export default function Home() {
               A Science-Based<br />Approach to<br />
               <span className="text-[#007CAF]">Wellness</span>
             </h2>
-            <p className="text-slate-600 leading-relaxed mb-8 text-sm sm:text-base">
-              We strive to provide a learning environment run by experienced and successful coaches. Our most important goal is to create a welcoming atmosphere and community in which everyone feels a sense of belonging.
-            </p>
+            <ScrollRevealText text="We strive to provide a learning environment run by experienced and successful coaches. Our most important goal is to create a welcoming atmosphere and community in which everyone feels a sense of belonging." />
             <a href="https://arcofitgym.clubautomation.com/member-portal/locations/1/memberships" target="_blank" rel="noopener noreferrer" className="bg-[#007CAF] hover:brightness-110 text-white font-bold px-8 py-3 rounded transition-all hover:scale-105 tracking-wider uppercase text-xs inline-block">
               Membership Options
             </a>
@@ -417,3 +415,28 @@ export default function Home() {
     </main>
   );
 }
+
+const Word = ({ children, progress, range }: { children: string, progress: any, range: [number, number] }) => {
+  const opacity = useTransform(progress, range, [0.2, 1]);
+  return <motion.span style={{ opacity }} className="inline-block mr-[0.25em]">{children}</motion.span>;
+};
+
+const ScrollRevealText = ({ text }: { text: string }) => {
+  const containerRef = useRef<HTMLParagraphElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start 85%", "end 50%"],
+  });
+
+  const words = text.split(" ");
+
+  return (
+    <p ref={containerRef} className="text-slate-600 leading-relaxed mb-8 text-sm sm:text-base md:text-lg font-medium flex flex-wrap">
+      {words.map((word, i) => {
+        const start = i / words.length;
+        const end = start + (1 / words.length);
+        return <Word key={i} progress={scrollYProgress} range={[start, end]}>{word}</Word>;
+      })}
+    </p>
+  );
+};
