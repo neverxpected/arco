@@ -151,7 +151,7 @@ export default function Home() {
       </section>
 
       {/* INFINITE TYPOGRAPHY MARQUEE */}
-      <section className="bg-white py-3 md:py-4 overflow-hidden border-b border-slate-100">
+      <section className="bg-[#007CAF] py-3 md:py-4 overflow-hidden">
         <motion.div
           className="flex whitespace-nowrap"
           animate={{ x: ['0%', '-50%'] }}
@@ -160,7 +160,7 @@ export default function Home() {
           {[...Array(2)].map((_, i) => (
             <span
               key={i}
-              className="text-2xl md:text-4xl font-black uppercase text-transparent [-webkit-text-stroke:1px_#cbd5e1] select-none px-4"
+              className="text-2xl md:text-4xl font-black uppercase text-white select-none px-4"
             >
               STRENGTH &bull; RECOVERY &bull; COMMUNITY &bull; SCIENCE &bull; REFORMER PILATES &bull; YOGA &bull;&nbsp;
             </span>
