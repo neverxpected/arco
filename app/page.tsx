@@ -142,16 +142,16 @@ export default function Home() {
       </section>
 
       {/* INFINITE TYPOGRAPHY MARQUEE */}
-      <section className="bg-white py-6 md:py-8 overflow-hidden border-b border-slate-100">
+      <section className="bg-white py-3 md:py-4 overflow-hidden border-b border-slate-100">
         <motion.div
           className="flex whitespace-nowrap"
           animate={{ x: ['0%', '-50%'] }}
-          transition={{ repeat: Infinity, ease: 'linear', duration: 20 }}
+          transition={{ repeat: Infinity, ease: 'linear', duration: typeof window !== 'undefined' && window.innerWidth < 768 ? 10 : 20 }}
         >
           {[...Array(2)].map((_, i) => (
             <span
               key={i}
-              className="text-5xl md:text-8xl font-black uppercase text-transparent [-webkit-text-stroke:2px_#cbd5e1] select-none px-4"
+              className="text-2xl md:text-4xl font-black uppercase text-transparent [-webkit-text-stroke:1px_#cbd5e1] select-none px-4"
             >
               STRENGTH &bull; RECOVERY &bull; COMMUNITY &bull; SCIENCE &bull; REFORMER PILATES &bull; YOGA &bull;&nbsp;
             </span>
